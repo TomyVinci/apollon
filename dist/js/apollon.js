@@ -609,12 +609,12 @@ if (typeof jQuery != 'undefined') {
 							    		if ( action.indexOf(apollonHead[j])>=0 ) {
 							    			if (val===undefined) {
 				    							var x=val;
-					    						cod += '<a id="'+x['id']+'" href="javascript:'+x['click']+';" class="tomybtn btn-'+x['color']+'">'+x['content']+'</a>';
+					    						cod += '<a id="'+x['id']+'" href="javascript:'+x['click']+';" class="apollonbtn btn-'+x['color']+'">'+x['content']+'</a>';
 							    			} else {
 					    						for (var n=0;n<val.length;n++) {
 					    							var x=val[n];
-					    							if (x?.['tooltip']!==undefined) cod += '<a id="'+x['id']+'-'+x['toolid']+'" data-url="sources/ajax/load/'+x['tooltip']+'.php" data-id="'+x['toolid']+'" data-val="0" href="'+x['click']+'" target="_blank" class="tomybtn btn-'+x['color']+' tooltipster">'+x['content']+'</a>';
-						    						else cod += '<a id="'+x['id']+'" href="javascript:'+x['click']+';" class="tomybtn btn-'+x['color']+'">'+x['content']+'</a>';
+					    							if (x?.['tooltip']!==undefined) cod += '<a id="'+x['id']+'-'+x['toolid']+'" data-url="sources/ajax/load/'+x['tooltip']+'.php" data-id="'+x['toolid']+'" data-val="0" href="'+x['click']+'" target="_blank" class="apollonbtn btn-'+x['color']+' tooltipster">'+x['content']+'</a>';
+						    						else cod += '<a id="'+x['id']+'" href="javascript:'+x['click']+';" class="apollonbtn btn-'+x['color']+'">'+x['content']+'</a>';
 					    						}
 							    			}
 							    		} else if (tolist.indexOf(apollonHead[j])>=0) {
@@ -716,12 +716,12 @@ if (typeof jQuery != 'undefined') {
 							    		if ( action.indexOf(apollonHead[j])>=0 ) {
 							    			if (typeof(val.length)=="undefined") {
 				    							var x=val;
-					    						cod += '<a id="'+x['id']+'" href="javascript:'+x['click']+';" class="tomybtn btn-'+x['color']+'">'+x['content']+'</a>';
+					    						cod += '<a id="'+x['id']+'" href="javascript:'+x['click']+';" class="apollonbtn btn-'+x['color']+'">'+x['content']+'</a>';
 							    			} else {
 					    						for (var n=0;n<val.length;n++) {
 					    							var x=val[n];
-					    							if (typeof(x['tooltip'])!="undefined") cod += '<a id="'+x['id']+'-'+x['toolid']+'" data-url="sources/ajax/load/'+x['tooltip']+'.php" data-id="'+x['toolid']+'" data-val="0" href="'+x['click']+'" target="_blank" class="tomybtn btn-'+x['color']+' tooltipster">'+x['content']+'</a>';
-						    						else cod += '<a id="'+x['id']+'" href="javascript:'+x['click']+';" class="tomybtn btn-'+x['color']+'">'+x['content']+'</a>';
+					    							if (typeof(x['tooltip'])!="undefined") cod += '<a id="'+x['id']+'-'+x['toolid']+'" data-url="sources/ajax/load/'+x['tooltip']+'.php" data-id="'+x['toolid']+'" data-val="0" href="'+x['click']+'" target="_blank" class="apollonbtn btn-'+x['color']+' tooltipster">'+x['content']+'</a>';
+						    						else cod += '<a id="'+x['id']+'" href="javascript:'+x['click']+';" class="apollonbtn btn-'+x['color']+'">'+x['content']+'</a>';
 					    						}
 							    			}
 							    		} else if (tolist.indexOf(apollonHead[j])>=0) {
@@ -814,12 +814,12 @@ if (typeof jQuery != 'undefined') {
 							    		if ( action.indexOf(apollonHead[j])>=0 ) {
 							    			if (val===undefined) {
 				    							var x=val;
-					    						cod += '<a id="'+x['id']+'" href="javascript:'+x['click']+';" class="tomybtn btn-'+x['color']+'">'+x['content']+'</a>';
+					    						cod += '<a id="'+x['id']+'" href="javascript:'+x['click']+';" class="apollonbtn btn-'+x['color']+'">'+x['content']+'</a>';
 							    			} else {
 					    						for (var n=0;n<val.length;n++) {
 					    							var x=val[n];
-					    							if (x?.['tooltip']!==undefined) cod += '<a id="'+x['id']+'-'+x['toolid']+'" data-url="sources/ajax/load/'+x['tooltip']+'.php" data-id="'+x['toolid']+'" data-val="0" href="'+x['click']+'" target="_blank" class="tomybtn btn-'+x['color']+' tooltipster">'+x['content']+'</a>';
-						    						else cod += '<a id="'+x['id']+'" href="javascript:'+x['click']+';" class="tomybtn btn-'+x['color']+'">'+x['content']+'</a>';
+					    							if (x?.['tooltip']!==undefined) cod += '<a id="'+x['id']+'-'+x['toolid']+'" data-url="sources/ajax/load/'+x['tooltip']+'.php" data-id="'+x['toolid']+'" data-val="0" href="'+x['click']+'" target="_blank" class="apollonbtn btn-'+x['color']+' tooltipster">'+x['content']+'</a>';
+						    						else cod += '<a id="'+x['id']+'" href="javascript:'+x['click']+';" class="apollonbtn btn-'+x['color']+'">'+x['content']+'</a>';
 					    						}
 							    			}
 							    		} else if (tolist.indexOf(apollonHead[j])>=0) {
@@ -948,12 +948,12 @@ if (typeof jQuery != 'undefined') {
 							    		if ( action.indexOf(apollonHead[j])>=0 ) {
 							    			if (val===undefined) {
 				    							var x=val;
-					    						cod += '<a id="'+x['id']+'" href="javascript:'+x['click']+';" class="tomybtn btn-'+x['color']+'">'+x['content']+'</a>';
+					    						cod += '<a id="'+x['id']+'" href="javascript:'+x['click']+';" class="apollonbtn btn-'+x['color']+'">'+x['content']+'</a>';
 							    			} else {
 					    						for (var n=0;n<val.length;n++) {
 					    							var x=val[n];
-					    							if (x?.['tooltip']!==undefined) cod += '<a id="'+x['id']+'-'+x['toolid']+'" data-url="sources/ajax/load/'+x['tooltip']+'.php" data-id="'+x['toolid']+'" data-val="0" href="'+x['click']+'" target="_blank" class="tomybtn btn-'+x['color']+' tooltipster">'+x['content']+'</a>';
-						    						else cod += '<a id="'+x['id']+'" href="javascript:'+x['click']+';" class="tomybtn btn-'+x['color']+'">'+x['content']+'</a>';
+					    							if (x?.['tooltip']!==undefined) cod += '<a id="'+x['id']+'-'+x['toolid']+'" data-url="sources/ajax/load/'+x['tooltip']+'.php" data-id="'+x['toolid']+'" data-val="0" href="'+x['click']+'" target="_blank" class="apollonbtn btn-'+x['color']+' tooltipster">'+x['content']+'</a>';
+						    						else cod += '<a id="'+x['id']+'" href="javascript:'+x['click']+';" class="apollonbtn btn-'+x['color']+'">'+x['content']+'</a>';
 					    						}
 							    			}
 							    		} else if (tolist.indexOf(apollonHead[j])>=0) {
@@ -1055,12 +1055,12 @@ if (typeof jQuery != 'undefined') {
 							    		if ( action.indexOf(apollonHead[j])>=0 ) {
 							    			if (typeof(val.length)=="undefined") {
 				    							var x=val;
-					    						cod += '<a id="'+x['id']+'" href="javascript:'+x['click']+';" class="tomybtn btn-'+x['color']+'">'+x['content']+'</a>';
+					    						cod += '<a id="'+x['id']+'" href="javascript:'+x['click']+';" class="apollonbtn btn-'+x['color']+'">'+x['content']+'</a>';
 							    			} else {
 					    						for (var n=0;n<val.length;n++) {
 					    							var x=val[n];
-					    							if (typeof(x['tooltip'])!="undefined") cod += '<a id="'+x['id']+'-'+x['toolid']+'" data-url="sources/ajax/load/'+x['tooltip']+'.php" data-id="'+x['toolid']+'" data-val="0" href="'+x['click']+'" target="_blank" class="tomybtn btn-'+x['color']+' tooltipster">'+x['content']+'</a>';
-						    						else cod += '<a id="'+x['id']+'" href="javascript:'+x['click']+';" class="tomybtn btn-'+x['color']+'">'+x['content']+'</a>';
+					    							if (typeof(x['tooltip'])!="undefined") cod += '<a id="'+x['id']+'-'+x['toolid']+'" data-url="sources/ajax/load/'+x['tooltip']+'.php" data-id="'+x['toolid']+'" data-val="0" href="'+x['click']+'" target="_blank" class="apollonbtn btn-'+x['color']+' tooltipster">'+x['content']+'</a>';
+						    						else cod += '<a id="'+x['id']+'" href="javascript:'+x['click']+';" class="apollonbtn btn-'+x['color']+'">'+x['content']+'</a>';
 					    						}
 							    			}
 							    		} else if (tolist.indexOf(apollonHead[j])>=0) {
@@ -1154,12 +1154,12 @@ if (typeof jQuery != 'undefined') {
 							    		if ( action.indexOf(apollonHead[j])>=0 ) {
 							    			if (val===undefined) {
 				    							var x=val;
-					    						cod += '<a id="'+x['id']+'" href="javascript:'+x['click']+';" class="tomybtn btn-'+x['color']+'">'+x['content']+'</a>';
+					    						cod += '<a id="'+x['id']+'" href="javascript:'+x['click']+';" class="apollonbtn btn-'+x['color']+'">'+x['content']+'</a>';
 							    			} else {
 					    						for (var n=0;n<val.length;n++) {
 					    							var x=val[n];
-					    							if (x?.['tooltip']!==undefined) cod += '<a id="'+x['id']+'-'+x['toolid']+'" data-url="sources/ajax/load/'+x['tooltip']+'.php" data-id="'+x['toolid']+'" data-val="0" href="'+x['click']+'" target="_blank" class="tomybtn btn-'+x['color']+' tooltipster">'+x['content']+'</a>';
-						    						else cod += '<a id="'+x['id']+'" href="javascript:'+x['click']+';" class="tomybtn btn-'+x['color']+'">'+x['content']+'</a>';
+					    							if (x?.['tooltip']!==undefined) cod += '<a id="'+x['id']+'-'+x['toolid']+'" data-url="sources/ajax/load/'+x['tooltip']+'.php" data-id="'+x['toolid']+'" data-val="0" href="'+x['click']+'" target="_blank" class="apollonbtn btn-'+x['color']+' tooltipster">'+x['content']+'</a>';
+						    						else cod += '<a id="'+x['id']+'" href="javascript:'+x['click']+';" class="apollonbtn btn-'+x['color']+'">'+x['content']+'</a>';
 					    						}
 							    			}
 							    		} else if (tolist.indexOf(apollonHead[j])>=0) {
