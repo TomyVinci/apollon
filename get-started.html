@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Apollon | Get started - documentation</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apollon | Get started - documentation">
+    <meta name="author" content="Tomy Vinci">    
+    <link rel="shortcut icon" href="favicon.ico">  
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- FontAwesome JS -->
+    <script defer src="assets/fontawesome/js/all.js"></script>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="assets/plugins/prism/prism.css">
+    <link rel="stylesheet" href="assets/plugins/elegant_font/css/style.css">  
+    <link rel="stylesheet" href="assets/plugins/simplelightbox/simple-lightbox.min.css">
+      
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    
+</head> 
+
+<body class="body-green">
+    <div class="page-wrapper">
+        <!-- ******Header****** -->
+        <header id="header" class="header">
+            <div class="container">
+                <div class="branding">
+                    <h1 class="logo">
+                        <a href="index.html">
+                            <span aria-hidden="true" class="icon_easel icon"></span>
+                            <span class="text-bold">Apollon</span> <span class="text-highlight">1.0</span>
+                        </a>
+                    </h1>
+                    
+                </div><!--//branding-->
+                
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Apollon</a></li>
+                    <li class="breadcrumb-item active">Quick Start</li>
+                </ol>
+            </div><!--//container-->
+        </header><!--//header-->
+        <div class="doc-wrapper">
+            <div class="container">
+                <div id="doc-header" class="doc-header text-center">
+                    <h1 class="doc-title"><i class="icon fa fa-paper-plane"></i> Get started</h1>
+                    <div class="meta"><i class="far fa-clock"></i> Last updated: September 10th, 2022</div>
+                </div><!--//doc-header-->
+                <div class="doc-body row">
+                    <div class="doc-content col-md-9 col-12 order-1">
+                        <div class="content-inner">
+                            <section id="download-section" class="doc-section">
+                                <h2 class="section-title">Download</h2>
+                                <div class="section-block">
+                                    <p>It's easy to get started with ApollonJs. All that's required is the CSS and JS files included in your page to render the data.<br/>
+                                        You can download the plugin from <a href="https://github.com/TomyVinci/apollon/archive/refs/heads/main.zip">github</a> and include the <b>dist</b> folder content.
+                                    </p>
+                                    <a href="https://github.com/TomyVinci/apollon/archive/refs/heads/main.zip" class="btn btn-green" target="_blank"><i class="fas fa-download"></i> Download Apollon</a>
+                                </div>
+                            </section><!--//doc-section-->
+                            <section id="installation-section" class="doc-section">
+                                <h2 class="section-title">Installation &amp; Usage</h2>
+                                <div id="step1"  class="section-block">
+                                    <h3 class="block-title">Step One</h3>
+                                    <p>After you download Apollon, move the <b>dist</b> folder (that contain apollon.min.css, rtl-apollon.min.css and apollon.min.js, fonts, lang, svg) to your root's application directorie. Next, load jQuery and include Apollon's CSS and JavaScript files inside of your tags:</p>
+                                    <pre><code class="language-markup">&lt;!-- The CSS Files in head --&gt; 
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;./dist/css/apollon.min.css&quot; /&gt; 
+
+&lt;!-- The langage JS Files if you use another langage than english --&gt; 
+&lt;script type=&quot;text/javascript&quot; src=&quot;./dist/lang/fr.js&quot;&gt; &lt;/script&gt; 
+&lt;!-- The JS Files, jQuery.js is required --&gt; 
+&lt;script type=&quot;text/javascript&quot; src=&quot;./dist/js/apollon.min.js&quot;&gt; &lt;/script&gt;</code></pre>
+
+                                </div><!--//section-block-->
+                                <div id="step2"  class="section-block">
+                                    <h3 class="block-title">Step Two</h3>
+                                    <p>You have to add an HTML code in your page, and the content will be replaced by the apollon data render.
+                                    </p>
+                                    <pre><code class="language-markup">&lt;!-- The .apollon-block div is required --&gt; 
+&lt;div id=&quot;apollon-block&quot;&gt;&lt;div id=&quot;datatest&quot;&gt;&lt;/div&gt;&lt;/div&gt;</code></pre>
+                                </div><!--//section-block-->
+                                <div id="step3"  class="section-block">
+                                    <h3 class="block-title">Step Three</h3>
+                                    <p>Once you have the element or context, you're ready to create your own Data analysis. You have to call the plugin by the following code:
+                                    </p>
+                                    <pre><code class="language-javascript">&lt;script&gt;
+var apollon;
+$(document).ready(function() {
+    apollon=$('#datatest').apollon({
+        // Options
+    });
+});
+&lt;/script&gt;</code></pre>
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+
+                            <section id="international" class="doc-section">
+                                <h2 class="section-title">Langages</h2>
+                                <div class="section-block">
+                                    <p>
+                                        The default Apollon strings are in English, but can easily be translated into another language, and you can add your own language by adding a js file in "dist/lang/" folder.<br/>
+                                        Ifyou do'nt select langage, it will be in English.
+                                    </p>
+                                    <h6>Langages list</h6>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Langage</th>
+                                                    <th>option</th>
+                                                    <th>JS file</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>English</td>
+                                                    <td><code class="language-javascript">lang: 'en'</code></td>
+                                                    <td>./dist/lang/en.js</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">2</th>
+                                                    <td>French</td>
+                                                    <td><code class="language-javascript">lang: 'fr'</code></td>
+                                                    <td>./dist/lang/fr.js</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">3</th>
+                                                    <td>Dutch</td>
+                                                    <td><code class="language-javascript">lang: 'de'</code></td>
+                                                    <td>./dist/lang/de.js</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">4</th>
+                                                    <td>Spanish</td>
+                                                    <td><code class="language-javascript">lang: 'es'</code></td>
+                                                    <td>./dist/lang/es.js</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">5</th>
+                                                    <td>Italian</td>
+                                                    <td><code class="language-javascript">lang: 'it'</code></td>
+                                                    <td>./dist/lang/it.js</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">6</th>
+                                                    <td>Hebrew</td>
+                                                    <td><code class="language-javascript">lang: 'iw'</code></td>
+                                                    <td>./dist/lang/iw.js</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">7</th>
+                                                    <td>Chinese</td>
+                                                    <td><code class="language-javascript">lang: 'zh'</code></td>
+                                                    <td>./dist/lang/zh.js</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">8</th>
+                                                    <td>Russian</td>
+                                                    <td><code class="language-javascript">lang: 'ru'</code></td>
+                                                    <td>./dist/lang/ru.js</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">9</th>
+                                                    <td>Arabic</td>
+                                                    <td><code class="language-javascript">lang: 'ar'</code></td>
+                                                    <td>./dist/lang/ar.js</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div><!--//table-responsive-->
+                                </div>
+                            </section><!--//doc-section-->
+
+                            <section id="data-source" class="doc-section">
+                                <h2 class="section-title">Data source</h2>
+                                <div class="section-block">
+                                    <p>
+                                        The main data source used for a Apollon must always be an array (it is created automatically when using DOM sourced table). Each item in that array will define a row to be displayed and Apollon can use foor basic data types as the data source for the rows:
+                                    </p>
+                                </div>
+                                <div id="html-a" class="section-block">
+                                    <h6>HTML</h6>
+                                    <p>
+                                        You can just use an HTML table to automatically get data from DOM, but you will lose lot of options like the special sort, and have to show all columns like ID:
+                                    </p>
+                                    <pre><code class="language-markup">&lt;div class="table-responsive" id="apollon-block"&gt;
+    &lt;table class="table table-bordered" id="datatest"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;#&lt;/th&gt;
+                &lt;th&gt;First Name&lt;/th&gt;
+                &lt;th&gt;Last Name&lt;/th&gt;
+                &lt;th&gt;Username&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;th scope=&quot;row&quot;&gt;1&lt;/th&gt;
+                &lt;td&gt;Mark&lt;/td&gt;
+                &lt;td&gt;Otto&lt;/td&gt;
+                &lt;td&gt;@mdo&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;th scope=&quot;row&quot;&gt;2&lt;/th&gt;
+                &lt;td&gt;Jacob&lt;/td&gt;
+                &lt;td&gt;Thornton&lt;/td&gt;
+                &lt;td&gt;@fat&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;th scope=&quot;row&quot;&gt;3&lt;/th&gt;
+                &lt;td&gt;Larry&lt;/td&gt;
+                &lt;td&gt;the Bird&lt;/td&gt;
+                &lt;td&gt;@twitter&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+                                    <p>
+                                        So you have to call Apollon like the following code:
+                                    </p>
+                                    <pre><code class="language-javascript">var apollon;
+$(document).ready(function() {
+    apollon=$('#datatest').apollon({
+        datatype: 'html'
+    });
+});</code></pre>
+                                </div>
+                                <div id="js-a" class="section-block">
+                                    <h6>Javascript</h6>
+                                    <p>
+                                        You can just use an HTML table to automatically get data from DOM, but you will lose lot of options like the special sort, and have to show all columns like ID:
+                                    </p>
+                                    <pre><code class="language-javascript">var data_source=[
+    {'#':1,'First Name':Mark,'Last Name':Otto,'Username':'@mdo','ID':1,'color':''}, 
+    {'#':2,'First Name':Jacob,'Last Name':Thornton,'Username':'@fat','ID':2,'color':'danger'}, 
+    {'#':3,'First Name':Larry,'Last Name':the Bird,'Username':'@twitter','ID':3,'color':''}
+];
+
+var apollon;
+$(document).ready(function() {
+    apollon=$('#datatest').apollon({
+        datatype: 'js', 
+        data: data_source, 
+        columns: ['#', 'First Name', 'Last Name', 'Username']
+    });
+});</code></pre>
+                                    <p>
+                                        The <code>ID</code>, and <code>color</code> columns can be used but not shown on the data render.
+                                    </p>
+                                </div>
+                                <div id="ajax-a" class="section-block">
+                                    <h6>AJAX</h6>
+                                    <p>
+                                        The best way to use Apollon is to get data from a PHP file to can use database and have realtime data:
+                                    </p>
+                                    <pre><code class="language-javascript">var apollon;
+$(document).ready(function() {
+    apollon=$('#datatest').apollon({
+        datatype: 'ajax', 
+        ajaxurl : './ajax/data.php?time>3265987',
+        data: {country:27}, 
+        columns: ['#', 'First Name', 'Last Name', 'Username']
+    });
+});</code></pre>
+                                    <p>
+                                        You can add a not shown columns in this source like a js, and the PHP response have to be:
+                                    </p>
+                                    <pre><code class="language-php">&lt;?php 
+$r = array('ok'=>1, 'data'=>array());
+date_default_timezone_set('Africa/Algiers'); 
+
+$r['data'] = array(
+    array("#"=>1, "First Name"=>"Mark", "Last Name"=>"Otto", "Username"=>"@mdo", "ID"=>1, "color"=>""),
+    array("#"=>2, "First Name"=>"Jacob", "Last Name"=>"Thornton", "Username"=>"@fat", "ID"=>2, "color"=>"danger"),
+    array("#"=>3, "First Name"=>"Larry", "Last Name"=>"the Bird", "Username"=>"@twitter", "ID"=>3, "color"=>"")
+);
+
+echo json_encode($r);
+?&gt;</code></pre>
+                                </div>
+                                <div id="json-a" class="section-block">
+                                    <h6>JSON</h6>
+                                    <p>
+                                        This source is like the AJAX one:
+                                    </p>
+                                    <pre><code class="language-javascript">var apollon;
+$(document).ready(function() {
+    apollon=$('#datatest').apollon({
+        datatype: 'json', 
+        ajaxurl : './ajax/data.json',
+        columns: ['#', 'First Name', 'Last Name', 'Username']
+    });
+});</code></pre>
+                                    <p>
+                                        You can add a not shown columns too in this source like a js, and the JSON file is:
+                                    </p>
+                                    <pre><code class="language-javascript">{"ok":1,"data":[
+    {'#':1,'First Name':Mark,'Last Name':Otto,'Username':'@mdo','ID':1,'color':''}, 
+    {'#':2,'First Name':Jacob,'Last Name':Thornton,'Username':'@fat','ID':2,'color':'danger'}, 
+    {'#':3,'First Name':Larry,'Last Name':the Bird,'Username':'@twitter','ID':3,'color':''}
+]}</code></pre>
+                                </div>
+                            </section><!--//doc-section-->
+
+                            <section id="data-show" class="doc-section">
+                                <h2 class="section-title">Data show</h2>
+                                <div class="section-block">
+                                    <p>
+                                        You have many ways to show your data:
+                                    </p>
+                                </div>
+                                <div id="table-b" class="section-block">
+                                    <h6>Table</h6>
+                                    <p>
+                                        Show data in a table:
+                                    </p>
+                                    <pre><code class="language-javascript">var apollon;
+$(document).ready(function() {
+    apollon=$('#datatest').apollon({
+        showmode: 'table'
+    });
+});</code></pre>
+                                    <p>
+                                        The result is:
+                                    </p>
+                                    <div style="text-align:center"><img class="img-fluid" src="./docs/show-table.PNG" alt="elegant icons" /></div>
+                                </div>
+                                <div id="list-b" class="section-block">
+                                    <h6>List</h6>
+                                    <p>
+                                        Show data in a list:
+                                    </p>
+                                    <pre><code class="language-javascript">var apollon;
+$(document).ready(function() {
+    apollon=$('#datatest').apollon({
+        showmode: 'list'
+    });
+});</code></pre>
+                                    <p>
+                                        The result is:
+                                    </p>
+                                    <div style="text-align:center"><img class="img-fluid" src="./docs/show-list.PNG" alt="elegant icons" /></div>
+                                </div>
+                                <div id="html-b" class="section-block">
+                                    <h6>HTML</h6>
+                                    <p>
+                                        You can also use your customed HTML code to show data, so the "showmode" will be "html", but with an other option <code>showcode</code>, and like the following code, you have to replace the text wit <code>[THE INDEX OF THE COLUMN]</code>, for example:
+                                    </p>
+                                    <pre><code class="language-javascript">var html_code = '\
+    &lt;div class=&quot;col-sm-12 col-md-12 col-lg-4 col-xl-4&quot;&gt;\
+        &lt;div class=&quot;card text-center card-img-top-1&quot;&gt;\
+            &lt;img class=&quot;card-img-top w-100&quot; src=&quot;./flags/[CODE].svg&quot; alt=&quot;&quot; width=&quot;242&quot; height=&quot;161&quot;&gt;\
+            &lt;div class=&quot;card-body&quot;&gt; \
+                &lt;h4 class=&quot;card-title mb-3&quot;&gt;[NAME]&lt;/h4&gt;\
+                &lt;p class=&quot;card-text&quot;&gt;[CAPITAL] - [ALPHA_3] phone: +[PHONE]&lt;/p&gt;\
+                &lt;a class=&quot;btn btn-primary btn-block&quot; href=&quot;blog.html&quot;&gt;[CONTINENT]&lt;/a&gt;\
+            &lt;/div&gt;\
+        &lt;/div&gt;\
+    &lt;/div&gt;\
+';
+
+var apollon;
+$(document).ready(function() {
+    apollon=$('#datatest').apollon({
+        showmode: 'html', 
+        showcode: html_code, 
+    });
+});</code></pre>
+                                    <p>
+                                        The result is:
+                                    </p>
+                                    <div style="text-align:center"><img class="img-fluid" src="./docs/show-html.PNG" alt="elegant icons" /></div>
+                                </div>
+                            </section><!--//doc-section-->
+
+                            <section id="call-back" class="doc-section">
+                                <h2 class="section-title">Callback</h2>
+                                <div class="section-block">
+                                    <p>
+                                        The function to call when the Apollon content be loaded:
+                                    </p>
+                                    <pre><code class="language-javascript">{
+    callback: function(){
+        // Your code here, for example:
+        alert('Apollon is ready');
+    }
+}</code></pre>
+                                    <p>
+                                        But for the AJAX and JSON data sources, the function will be called after the server response, so you have to use the following one:
+                                    </p>
+                                    <pre><code class="language-javascript">{
+    callbackAjax: function(){
+        // Your code here, for example:
+        alert('Apollon is ready, content loaded');
+    }
+}</code></pre>
+                                </div>
+
+                            </section><!--//doc-section-->
+
+                            <section id="plugins-include" class="doc-section">
+                                <h2 class="section-title">Plugins to include</h2>
+                                <div class="section-block">
+                                    <p>
+                                        The Apollon plugin use some external plugins, that you have to include to be used, otherwise the option in the menu will be automatically hidden.
+                                    </p>
+                                </div>
+                                <div id="plugin-flotcharts" class="section-block">
+                                    <h6>Flot Charts</h6>
+                                    <p>
+                                        <a href="https://www.flotcharts.org/" target="_blank">Flot</a> is a pure JavaScript plotting library for jQuery, with a focus on simple usage, Apollon use it to let the use get graphs from the data, so you have to include:
+                                    </p>
+                                    <pre><code class="language-markup">&lt;script type=&quot;text/javascript&quot; src=&quot;./demo/flot/jquery.flot.min.js&quot;&gt;&lt;/script&gt;</code></pre>
+                                    <div style="text-align:center"><img class="img-fluid" src="./docs/graph-img.PNG" alt="elegant icons" /></div>
+                                </div>
+                                <div id="plugin-TableExport" class="section-block">
+                                    <h6>Table export</h6>
+                                    <p>
+                                        <a href="https://tableexport.travismclarke.com/" target="_blank">Table export</a> is a JavaScript library for jQuery, Apollon use it to let the use export data to CSV, XML, SQL, Excell.<br/>You must include:
+                                    </p>
+                                    <pre><code class="language-markup">&lt;script type=&quot;text/javascript&quot; src=&quot;./demo/Export-table/tableExport.min.js&quot;&gt;&lt;/script&gt;</code></pre>
+                                    <div style="text-align:center"><img class="img-fluid" src="./docs/export-img.PNG" alt="elegant icons" /></div>
+                                </div>
+                                <div id="plugin-jspdf" class="section-block">
+                                    <h6>PDF Export</h6>
+                                    <p>
+                                        If you need to add PDF export to your Apollon, you have to add <a href="https://github.com/parallax/" target="_blank">jsPDF</a> and <a href="https://github.com/simonbengtsson/jsPDF-AutoTable" target="_blank">jsPDF-AutoTable</a>, so the JS files to include are:
+                                    </p>
+                                    <pre><code class="language-markup">&lt;script type=&quot;text/javascript&quot; src=&quot;./demo/Export-table/jsPDF/jspdf.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;./demo/Export-table/jsPDF-AutoTable/jspdf.plugin.autotable.js&quot;&gt;&lt;/script&gt;</code></pre>
+                                </div>
+                            </section><!--//doc-section-->
+
+                        </div><!--//content-inner-->
+                    </div><!--//doc-content-->
+                    <div class="doc-sidebar col-md-3 col-12 order-0 d-none d-md-flex">
+                        <div id="doc-nav" class="doc-nav">
+	                            <nav id="doc-menu" class="nav doc-menu flex-column sticky">
+		                            <li class="nav-item">
+	                                    <a class="nav-link scrollto" href="#download-section">Download</a>
+		                            </li>
+		                            <li class="nav-item">
+	                                    <a class="nav-link scrollto" href="#installation-section">Installation &amp; Usage</a>
+		                            </li>
+                                    <nav class="nav doc-sub-menu nav flex-column">
+	                                    <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#step1">Step One</a>
+	                                    </li>
+	                                    <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#step2">Step Two</a>
+	                                    </li>
+	                                    <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#step3">Step Three</a>
+	                                    </li>
+                                    </nav><!--//nav-->
+                                    <li class="nav-item">
+                                          <a class="nav-link scrollto" href="#international">Langages</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link scrollto" href="#data-source">Data source</a>
+                                    </li>
+                                    <nav class="nav doc-sub-menu nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#html-a">HTML</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#js-a">JS</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#ajax-a">Ajax</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#json-a">JSON</a>
+                                        </li>
+                                    </nav><!--//nav-->
+                                    <li class="nav-item">
+                                        <a class="nav-link scrollto" href="#data-show">Data show</a>
+                                    </li>
+                                    <nav class="nav doc-sub-menu nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#table-b">Table</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#list-b">List</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#html-b">HTML</a>
+                                        </li>
+                                    </nav><!--//nav-->
+                                    <li class="nav-item">
+                                          <a class="nav-link scrollto" href="#call-back">Callback</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link scrollto" href="#plugins-include">Plugins to include</a>
+                                    </li>
+                                    <nav class="nav doc-sub-menu nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#plugin-flotcharts">Flot Charts</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#plugin-TableExport">Table export</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#plugin-jspdf">PDF Export</a>
+                                        </li>
+                                    </nav><!--//nav-->
+	                            </nav><!--//doc-menu-->
+                        </div>
+                    </div><!--//doc-sidebar-->
+                </div><!--//doc-body-->              
+            </div><!--//container-->
+        </div><!--//doc-wrapper-->
+        
+        <div id="promo-block" class="promo-block">
+            <div class="container">
+                <div class="promo-block-inner">
+                    <div class="row">
+                        <div class="figure-holder col-lg-5 col-md-6 col-12">
+                            <div class="figure-holder-inner">
+                                <a href="https://themes.3rdwavemedia.com/bootstrap-templates/portfolio/instance-bootstrap-portfolio-theme-for-developers/" target="_blank"><img class="img-fluid" src="assets/images/demo/instance-promo.jpg" alt="Instance Theme" /></a>
+                            </div>
+                        </div><!--//figure-holder-->
+                        <div class="content-holder col-lg-7 col-md-6 col-12">
+                            <div class="content-holder-inner">
+                                <div class="desc">
+                                    <h4 class="content-title"><strong> Apollon - Data analysis jQuery plugin</strong></h4>
+                                    <p>
+                                        Apollon is jquery plugin for data analysis and show from JS object to table, list or any HTML customed code, change order, show with pagination, create graphs, statistics and use dynamic filters, export parts of data...<br/>
+                                        this is the first version.
+                                    </p>
+                                    <a class="btn btn-cta" href="demo.html" target="_blank"><i class="fas fa-external-link-alt"></i> View Demo</a>
+                                </div><!--//desc-->
+                                <div class="author"><a href="https://github.com/TomyVinci">Tomy Vinci</a></div>
+                                <div class="desc">
+                                    <p>
+                                        You can found Tomy vinci in <a href="facebook.com/tomy.vinci.92" target="_blank">Facebook</a> and in <a href="instagram.com/matadorfit" target="_blank">Instagram</a>
+                                    </p>
+                                </div><!--//desc-->
+                            </div><!--//content-holder-inner-->
+                        </div><!--//content-holder-->
+                    </div><!--//row-->
+                </div><!--//promo-block-inner-->  
+            </div><!--//container-->
+        </div><!--//promo-block-->
+        
+    </div><!--//page-wrapper-->
+    
+    <footer id="footer" class="footer text-center">
+        <div class="container">
+            <small class="copyright">Developed with <span class="sr-only">love</span><i class="fas fa-heart"></i> by <a href="https://themes.3rdwavemedia.com/" target="_blank">tomy.vinci</a> for everybody</small>
+            
+        </div><!--//container-->
+    </footer><!--//footer-->
+    
+     
+    <!-- Main Javascript -->          
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plugins/prism/prism.js"></script>      
+    <script src="assets/plugins/stickyfill/dist/stickyfill.min.js"></script>      
+    <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script> 
+    <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>                                                          
+    <script src="assets/js/main.js"></script>
+    
+</body>
+</html> 
+

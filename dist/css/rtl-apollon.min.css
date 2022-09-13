@@ -1,0 +1,11 @@
+/*
+ *  https://tomyvinci.github.io/apollon/
+ *
+ *  Document   : apollon.js
+ *  Author     : Tomy Vinci 
+ *  Description: The CSS file of Apollon For Arabic and Hebrew
+ *  Version    : v1.0.0 / Free
+ *  This files will automaticaly be added
+ *
+*/
+#datatest-txt3,.apollon-content .apollon-sidebar,.apollon-details .col-sm-12 .form-control[type=search],.apollon-details .col-sm-12 select.form-control,.apollon-filters .col-md-3.col-sm-12 label,.apollon-filters .result-table,.dropdown-content div.like-a .second-stage a,dl.tomylist,table.table-apollon{direction:rtl;direction:rtl}.dropdown-content a,.dropdown-content div.like-a{text-align:right;direction:rtl;direction:rtl;text-align:revert}#datatest-txt3,.apollon-details .col-sm-12 .form-control[type=search],.apollon-details .col-sm-12 select.form-control,.apollon-filters .col-md-3.col-sm-12 label,.apollon-filters .result-table,.dropdown-content div.like-a .second-stage a,table.table-apollon{text-align:right}.apollon-angle-right:before{content:'\f104'!important}.apollon-content .apollon-sidebar{left:auto;right:0;text-align:right}dl.tomylist{text-align:revert}dl.tomylist.dl-horizontal dd{margin-left:0;margin-right:180px}dl.tomylist.dl-horizontal dt{float:right;clear:left;text-align:left}.apollon-content .table-responsive.withsidebar,.apollon-details.withsidebar{margin-left:0;margin-right:250px}

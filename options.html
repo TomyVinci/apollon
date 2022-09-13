@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Apollon | Options - documentation</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apollon | Options - documentation">
+    <meta name="author" content="Tomy Vinci">    
+    <link rel="shortcut icon" href="favicon.ico">  
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- FontAwesome JS -->
+    <script defer src="assets/fontawesome/js/all.js"></script>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="assets/plugins/prism/prism.css">
+    <link rel="stylesheet" href="assets/plugins/elegant_font/css/style.css">  
+    <link rel="stylesheet" href="assets/plugins/simplelightbox/simple-lightbox.min.css">
+
+
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    
+</head> 
+
+<body class="body-pink">
+    <div class="page-wrapper">
+        <!-- ******Header****** -->
+        <header id="header" class="header">
+            <div class="container">
+                <div class="branding">
+                    <h1 class="logo">
+                        <a href="index.html">
+                            <span aria-hidden="true" class="icon_easel icon"></span>
+                            <span class="text-bold">Apollon</span> <span class="text-highlight">1.0</span>
+                        </a>
+                    </h1>
+                </div><!--//branding-->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Apollon</a></li>
+                    <li class="breadcrumb-item active">Options</li>
+                </ol>
+            </div><!--//container-->
+        </header><!--//header-->
+        <div class="doc-wrapper">
+            <div class="container">
+                <div id="doc-header" class="doc-header text-center">
+                    <h1 class="doc-title"><span aria-hidden="true" class="icon icon_puzzle_alt"></span> Options</h1>
+                    <div class="meta"><i class="far fa-clock"></i> Last updated: September 10th, 2022</div>
+                </div><!--//doc-header-->
+                <div class="doc-body row" >
+                    <div class="doc-content col-md-9 col-12 order-1">
+                        <div class="content-inner">
+
+                            <section id="table-info" class="doc-section">
+                                <h2 class="section-title">Data infos</h2>
+                                <div id="table-uniqid" class="section-block">
+                                    <h3 class="block-title">Table unique ID</h3>
+                                    <p>
+                                        <strong>tableID <i class="fas fa-option"></i></strong> You can set an unique ID :
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">{
+    // The id of the table
+    tableID: 1,
+}</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="table-name" class="section-block">
+                                    <h3 class="block-title">Table Name</h3>
+                                    <p>
+                                        <strong>tableName <i class="fas fa-option"></i></strong> You can set a name to the table :
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">{
+    // The Name of the table
+    tableName: 'Apollon',
+}</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="dist-loc" class="section-block">
+                                    <h3 class="block-title">"dist" root</h3>
+                                    <p>
+                                        <strong>distloc <i class="fas fa-option"></i></strong> Set the location of the <code>dist</code> folder:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">{
+    // The location of the "dist" folder of font, svg, img...
+    distloc: './dist/',
+}</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+
+                            <section id="data-source" class="doc-section">
+                                <h2 class="section-title">Data source</h2>
+                                <div id="data-type" class="section-block">
+                                    <h3 class="block-title">Data type</h3>
+                                    <p>
+                                        <strong>datatype <i class="fas fa-option"></i></strong> Set the data source, to get the content from <code>html</code>, <code>js</code>, <code>ajax</code>, <code>json</code>. there is more informations in the <a href="get-started.html#html-a" target="_blank">Get started</a> page:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">{
+    // Get data from: html, js, ajax, json
+    datatype: 'html',
+}</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="data-data" class="section-block">
+                                    <h3 class="block-title">Data option</h3>
+                                    <p>
+                                        <strong>data <i class="fas fa-option"></i></strong> This option is used set the content when you <a href="get-started.html#js-a" target="_blank">get data</a> source from <code>datatype: 'js'</code> array, but you can use it to send <code>POST</code> data to <a href="get-started.html#ajax-a" target="_blank">the server</a> when you use <code>datatype: 'ajax'</code>:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">{
+    // Get data from JS array when {datatype: 'js'}
+    data: {...},
+    // Send data to the PHP file when {datatype: 'ajax'}
+    data: {date_min:32165487},
+}</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="data-url" class="section-block">
+                                    <h3 class="block-title">Data url</h3>
+                                    <p>
+                                        <strong>ajaxurl <i class="fas fa-option"></i></strong> This option is used set the location to the server side when you use <code>datatype: 'ajax'</code> or <code>datatype: 'json'</code>. So you have the <a href="get-started.html#json-a" target="_blank">JSON</a> and <a href="get-started.html#ajax-a" target="_blank">AJAX</a> sources :
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">{
+    // URL of the PHP or JSON Files
+    'ajaxurl' : './ajax/data.php?id=4',
+}</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+
+
+                            <section id="data-show" class="doc-section">
+                                <h2 class="section-title">Show data</h2>
+                                <div id="show-mode" class="section-block">
+                                    <h3 class="block-title">Show mode</h3>
+                                    <p>
+                                        <strong>showmode <i class="fas fa-option"></i></strong> This option is used set how to show your data <code>html</code>, <code>list</code>, <code>html</code>. The <a href="get-started.html#table-b" target="_blank">Table</a> and <a href="get-started.html#list-b" target="_blank">List</a> are simple, but for the <a href="get-started.html#html-b" target="_blank">customed HTML code</a> you must add an other option <code>showcode</code> :
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">{
+    // show data as table, list, html
+    showmode: 'table',
+}</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="mode-code" class="section-block">
+                                    <h3 class="block-title">HTML code</h3>
+                                    <p>
+                                        <strong>showcode <i class="fas fa-option"></i></strong> This option is used set the customed HTML code to use when <code>showmode: 'html'</code>. You can see the following example and more informations in <a href="get-started.html#html-b" target="_blank">this page</a>:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">var html_code = '\
+    &lt;div class=&quot;col-sm-12 col-md-12 col-lg-4 col-xl-4&quot;&gt;\
+        &lt;div class=&quot;card text-center card-img-top-1&quot;&gt;\
+            &lt;img class=&quot;card-img-top w-100&quot; src=&quot;./flags/[CODE].svg&quot; alt=&quot;&quot; width=&quot;242&quot; height=&quot;161&quot;&gt;\
+            &lt;div class=&quot;card-body&quot;&gt; \
+                &lt;h4 class=&quot;card-title mb-3&quot;&gt;[NAME]&lt;/h4&gt;\
+                &lt;p class=&quot;card-text&quot;&gt;[CAPITAL] - [ALPHA_3] phone: +[PHONE]&lt;/p&gt;\
+                &lt;a class=&quot;btn btn-primary btn-block&quot; href=&quot;blog.html&quot;&gt;[CONTINENT]&lt;/a&gt;\
+            &lt;/div&gt;\
+        &lt;/div&gt;\
+    &lt;/div&gt;\
+';
+{
+    // HTML code to use when showmode: 'html',
+    showcode: html_code, 
+}</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="data-columns" class="section-block">
+                                    <h3 class="block-title">Columns list</h3>
+                                    <p>
+                                        <strong>columns <i class="fas fa-option"></i></strong> When you use <code>datatype: 'js'</code>, <code>datatype: 'ajax'</code> or <code>datatype: 'json'</code>, you have to specify the table or list columns by the "columns" option:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">{
+    // The columns list of the table
+    columns: ['id', 'name', ...],
+}</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="data-toshow" class="section-block">
+                                    <h3 class="block-title">Number to show</h3>
+                                    <p>
+                                        <strong>toshow <i class="fas fa-option"></i></strong> This option is used to set the number of items to show per page select list:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">{
+    // Number of items to show per page
+    toshow: [10,25,50,100,200,500],
+}</code></pre>
+                                    <div style="text-align:center"><img class="img-fluid" src="./docs/number to show.PNG" alt="elegant icons" /></div>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="data-tosort" class="section-block">
+                                    <h3 class="block-title">Sorting on load</h3>
+                                    <p>
+                                        <strong>tosort <i class="fas fa-option"></i></strong> You can set content sorting on load, by column and direction:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">{
+    // Sort on content load
+    tosort: ['id', 'asc'], // or 'desc'
+}</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+
+                            <section id="data-change" class="doc-section">
+                                <h2 class="section-title">Change content</h2>
+                                <div id="numeric-sort" class="section-block">
+                                    <h3 class="block-title">Numeric sort</h3>
+                                    <p>
+                                        <strong>sortnbr <i class="fas fa-option"></i></strong> Set columns to sort like numeric values, for example in string sorting 1, 12, 2, 25, 9 But in numeric order 1, 2, 9, 12, 25:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">{
+    // Columns to sort as number (numeric sort)
+    sortnbr: ['col 1', 'col 3'],
+}</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="data-trufalse" class="section-block">
+                                    <h3 class="block-title">Binary data</h3>
+                                    <p>
+                                        <strong>trufalse <i class="fas fa-option"></i></strong> Set columns to show like <code>true</code> and <code>false</code> icons:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">{
+    // Columns to show as True/False
+    trufalse: ['col 2'],
+}</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="data-tolist" class="section-block">
+                                    <h3 class="block-title">To list</h3>
+                                    <p>
+                                        <strong>tolist <i class="fas fa-option"></i></strong> Set columns to show like an <code>ul</code> list when the column contain an <code>array</code>:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">{
+    // Columns to show as list
+    tolist: ['col 4'],
+}</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="data-action" class="section-block">
+                                    <h3 class="block-title">Buttons</h3>
+                                    <p>
+                                        <strong>action <i class="fas fa-option"></i></strong> This option is important, it's used to replace a column by button:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">{
+    // Columns to show as button to do actions 
+    action: ['Do Something'],
+}</code></pre>
+                                    <p>
+                                        In a PHP file for example the column must return the following code:
+                                    </p>
+                                    <pre><code class="language-php">&lt;?php 
+    'ID' => 5, 
+    'Do Something' => array(
+        array(
+            'id' => 'btn-5', 
+            'content' =>'&lt;i class=&quot;ti-pencil white-ico&quot;&gt;&lt;/i&gt;', 
+            'click' => 'window.open(\'page?i=5\', \'_blank\').focus()', 
+            'color' => 'info'
+        ), 
+        array(
+            'id' => 'btn-'.$Num, 
+            'content' => '&lt;i class=&quot;ti-file white-ico&quot;&gt;&lt;/i&gt;', 
+            'click' => 'window.open(\'page?i=3\', \'_blank\').focus()', 
+            'color' => 'warning'
+        )
+    ), 
+?&gt;</code></pre>
+                                    <div style="text-align:center"><img class="img-fluid" src="./docs/buttons-action.PNG" alt="elegant icons" /></div>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+
+                            <section id="sort-spc" class="doc-section">
+                                <h2 class="section-title">Sort / Filter</h2>
+                                <div id="data-sortfiltr" class="section-block">
+                                    <h3 class="block-title">Special sorting</h3>
+                                    <p>
+                                        <strong>specialsort <i class="fas fa-option"></i></strong> This option is used to change any column sorting, for example the column "Date" with a string value '02/04/1991', but you can add a column to the array "sort_Date" with timestamp '321659875', and when you do sorting to the "Date" column, Apollon will sort the "sort_Date" column:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">{
+    // Sort the columns 'Col' and 'Col 2' with the 'sort_Col' and 'sort_Col 2' values
+    specialsort: ['Col', 'Col 2'],
+}</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="data-filters" class="section-block">
+                                    <h3 class="block-title">Filters</h3>
+                                    <p>
+                                        <strong>filters <i class="fas fa-option"></i></strong> You can add dynamic filters in the sidebar to Apollon on load, the content will be automatically added:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">{
+    // Add filters sidebar from the columns set in filters option
+    filters: ['Col', 'Col 2'],
+}</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="data-filterMaxNum" class="section-block">
+                                    <h3 class="block-title">filterMaxNum</h3>
+                                    <p>
+                                        <strong>filterMaxNum <i class="fas fa-option"></i></strong> When you add dynamic filters, the content will be automatically added, but a filter can have lot of values, so you can limit them with this option:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">{
+    // Max number of values to show in filter
+    filterMaxNum: 20,
+}</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="data-export" class="doc-section">
+                                <h2 class="section-title">Export data</h2>
+                                <div id="exp-CSV" class="section-block">
+                                    <h3 class="block-title">CSV</h3>
+                                    <p>
+                                        <strong>exportCSV <i class="fas fa-option"></i></strong> This option is used to add <code>export CSV</code> to the menu, if the <a href="get-started.html#plugin-TableExport" target="_blank">Table Export plugin</a> is included:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">{
+    // Add export as CSV file to the menu
+    exportCSV: true, 
+}</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="exp-XML" class="section-block">
+                                    <h3 class="block-title">XML</h3>
+                                    <p>
+                                        <strong>exportXML <i class="fas fa-option"></i></strong> This option is used to add <code>export XML</code> to the menu, if the <a href="get-started.html#plugin-TableExport" target="_blank">Table Export plugin</a> is included:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">{
+    // Add export as XML file to the menu
+    exportXML: true, 
+}</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="exp-PDF" class="section-block">
+                                    <h3 class="block-title">PDF</h3>
+                                    <p>
+                                        <strong>exportPDF <i class="fas fa-option"></i></strong> This option is used to add <code>export PDF</code> to the menu, if the <a href="get-started.html#plugin-TableExport" target="_blank">Table Export plugin</a> and <a href="get-started.html#plugin-jspdf" target="_blank">JSPDF plugin</a> are included:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">{
+    // Add export as PDF file to the menu
+    exportPDF: true, 
+}</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="exp-SQL" class="section-block">
+                                    <h3 class="block-title">SQL</h3>
+                                    <p>
+                                        <strong>exportSQL <i class="fas fa-option"></i></strong> This option is used to add <code>export SQL</code> to the menu, if the <a href="get-started.html#plugin-TableExport" target="_blank">Table Export plugin</a> is included:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">{
+    // Add export as sql file to the menu
+    exportSQL: true, 
+}</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                        </div><!--//content-inner-->
+                    </div><!--//doc-content-->
+                    <div class="doc-sidebar col-md-3 col-12 order-0 d-none d-md-flex">
+                        <div id="doc-nav" class="doc-nav">
+                            <ul id="doc-menu" class="nav doc-menu flex-column sticky">
+	                            <li class="nav-item">
+                                     <a class="nav-link scrollto" href="#dashboards">Options</a>
+	                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link scrollto" href="#table-info">Data infos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <ul class="nav doc-sub-menu nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#table-uniqid">Table unique ID</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#table-name">Table Name</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#dist-loc">"dist" root</a>
+                                        </li>
+                                    </ul><!--//nav-->
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link scrollto" href="#data-source">Data source</a>
+                                </li>
+                                <li class="nav-item">
+                                    <ul class="nav doc-sub-menu nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#data-type">Data type</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#data-data">Data option</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#data-url">Data url</a>
+                                        </li>
+                                    </ul><!--//nav-->
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link scrollto" href="#data-show">Show data</a>
+                                </li>
+                                <li class="nav-item">
+                                    <ul class="nav doc-sub-menu nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#show-mode">Show mode</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#mode-code">HTML code</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#data-columns">Columns list</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#data-toshow">Number to show</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#data-tosort">Sorting on load</a>
+                                        </li>
+                                    </ul><!--//nav-->
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link scrollto" href="#data-change">Change content</a>
+                                </li>
+                                <li class="nav-item">
+                                    <ul class="nav doc-sub-menu nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#numeric-sort">Numeric sort</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#data-trufalse">Binary data</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#data-tolist">To list</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#data-action">Buttons</a>
+                                        </li>
+                                    </ul><!--//nav-->
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link scrollto" href="#sort-spc">Sort / Filter</a>
+                                </li>
+                                <li class="nav-item">
+                                    <ul class="nav doc-sub-menu nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#data-sortfiltr">Special sorting</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#data-filters">Filters</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#data-filterMaxNum">filterMaxNum</a>
+                                        </li>
+                                    </ul><!--//nav-->
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link scrollto" href="#data-export">Export data</a>
+                                </li>
+                                <li class="nav-item">
+                                    <ul class="nav doc-sub-menu nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#exp-CSV">CSV</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#exp-XML">XML</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#exp-PDF">PDF</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#exp-SQL">SQL</a>
+                                        </li>
+                                    </ul><!--//nav-->
+                                </li>
+                            </ul><!--//doc-menu-->
+                        </div><!--//doc-nav-->
+                    </div><!--//doc-sidebar-->
+                </div><!--//doc-body-->              
+            </div><!--//container-->
+        </div><!--//doc-wrapper-->
+        
+        <div id="promo-block" class="promo-block">
+            <div class="container">
+                <div class="promo-block-inner">
+                    <div class="row">
+                        <div class="figure-holder col-lg-5 col-md-6 col-12">
+                            <div class="figure-holder-inner">
+                                <a href="https://themes.3rdwavemedia.com/bootstrap-templates/portfolio/instance-bootstrap-portfolio-theme-for-developers/" target="_blank"><img class="img-fluid" src="assets/images/demo/instance-promo.jpg" alt="Instance Theme" /></a>
+                            </div>
+                        </div><!--//figure-holder-->
+                        <div class="content-holder col-lg-7 col-md-6 col-12">
+                            <div class="content-holder-inner">
+                                <div class="desc">
+                                    <h4 class="content-title"><strong> Apollon - Data analysis jQuery plugin</strong></h4>
+                                    <p>
+                                        Apollon is jquery plugin for data analysis and show from JS object to table, list or any HTML customed code, change order, show with pagination, create graphs, statistics and use dynamic filters, export parts of data...<br/>
+                                        this is the first version.
+                                    </p>
+                                    <a class="btn btn-cta" href="demo.html" target="_blank"><i class="fas fa-external-link-alt"></i> View Demo</a>
+                                </div><!--//desc-->
+                                <div class="author"><a href="https://github.com/TomyVinci">Tomy Vinci</a></div>
+                                <div class="desc">
+                                    <p>
+                                        You can found Tomy vinci in <a href="facebook.com/tomy.vinci.92" target="_blank">Facebook</a> and in <a href="instagram.com/matadorfit" target="_blank">Instagram</a>
+                                    </p>
+                                </div><!--//desc-->
+                            </div><!--//content-holder-inner-->
+                        </div><!--//content-holder-->
+                    </div><!--//row-->
+                </div><!--//promo-block-inner-->  
+            </div><!--//container-->
+        </div><!--//promo-block-->
+        
+    </div><!--//page-wrapper-->
+    
+    <footer id="footer" class="footer text-center">
+        <div class="container">
+            <small class="copyright">Developed with <span class="sr-only">love</span><i class="fas fa-heart"></i> by <a href="https://themes.3rdwavemedia.com/" target="_blank">tomy.vinci</a> for everybody</small>
+            
+        </div><!--//container-->
+    </footer><!--//footer-->
+    
+     
+    <!-- Main Javascript -->          
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plugins/prism/prism.js"></script>      
+    <script src="assets/plugins/stickyfill/dist/stickyfill.min.js"></script>      
+    <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script> 
+    <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>                                                          
+    <script src="assets/js/main.js"></script>
+    
+</body>
+</html> 
+

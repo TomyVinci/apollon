@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>Apollon | Functions - documentation</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apollon | Functions - documentation">
+    <meta name="author" content="Tomy Vinci">    
+    <link rel="shortcut icon" href="favicon.ico">  
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- FontAwesome JS -->
+    <script defer src="assets/fontawesome/js/all.js"></script>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="assets/plugins/prism/prism.css">
+    <link rel="stylesheet" href="assets/plugins/elegant_font/css/style.css">
+    <link rel="stylesheet" href="assets/plugins/simplelightbox/simple-lightbox.min.css">
+
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    
+</head> 
+
+<body class="body-blue">
+    <div class="page-wrapper">
+        <!-- ******Header****** -->
+        <header id="header" class="header">
+            <div class="container">
+                <div class="branding">
+                    <h1 class="logo">
+                        <a href="index.html">
+                            <span aria-hidden="true" class="icon_easel icon"></span>
+                            <span class="text-bold">Apollon</span> <span class="text-highlight">1.0</span>
+                        </a>
+                    </h1>
+                </div><!--//branding-->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Apollon</a></li>
+                    <li class="breadcrumb-item active">Functions</li>
+                </ol>
+            </div><!--//container-->
+        </header><!--//header-->
+        <div class="doc-wrapper">
+            <div class="container">
+                <div id="doc-header" class="doc-header text-center">
+                    <h1 class="doc-title"><span aria-hidden="true" class="icon icon_genius"></span> Functions</h1>
+                    <div class="meta"><i class="far fa-clock"></i> Last updated: September 10th, 2022</div>
+                </div><!--//doc-header-->
+                <div class="doc-body row">
+                    <div class="doc-content col-md-9 col-12 order-1">
+                        <div class="content-inner">
+                            <section id="functions" class="doc-section">
+                                <h2 class="section-title">Functions</h2>
+                                <div class="section-block">
+                                    <p>
+                                        The Apollon functions allow you to manage the data content, select, update, remove ... but you have to set the object like <code>var apollon</code> in the following example:
+                                    </p>
+                                    <pre><code class="language-javascript">&lt;script&gt;
+var apollon; // <- this one
+$(document).ready(function() {
+    apollon=$('#datatest').apollon({
+        // Options
+    });
+});
+&lt;/script&gt;</code></pre>
+                                    <p>
+                                        And if you have more than one table, you will have <code>apollon[0]</code>, <code>apollon[1]</code>, <code>apollon[2]</code>...
+                                    </p>
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="get-data" class="doc-section">
+                                <h2 class="section-title">Get data</h2>
+                                <div id="get-array" class="section-block">
+                                    <h3 class="block-title">1. Get array</h3>
+                                    <p>
+                                        <strong>getTable() <i class="fas fa-function"></i></strong> return all the data content in a js array:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">// Get all the content
+var myData = apollon[0].getTable();</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="get-filtred-array" class="section-block">
+                                    <h3 class="block-title">2. Get filtred array</h3>
+                                    <p>
+                                        <strong>getFiltredTable() <i class="fas fa-function"></i></strong> return only filtered data content in a js array:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">// Get all the filtred content
+var myData = apollon[0].getFiltredTable();</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="get-line" class="section-block">
+                                    <h3 class="block-title">3. Get line</h3>
+                                    <p>
+                                        <strong>getLine() <i class="fas fa-function"></i></strong> if you use an unique ID in a ID column, this function return the line with the ID given in argument:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">// Get a line with ID
+var myLine = apollon[0].getLine(id);</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="get-column" class="section-block">
+                                    <h3 class="block-title">4. Get column</h3>
+                                    <p>
+                                        <strong>getColumn() <i class="fas fa-function"></i></strong> if you use an unique ID in a ID column, this function return the column 'column' value of the line with the ID given in argument:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">// Get a column 'column' of the line with ID
+var myVal = apollon[0].getColumn(id, column);</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+
+
+                            <section id="update-data" class="doc-section">
+                                <h2 class="section-title">Update</h2>
+                                <div id="add-line" class="section-block">
+                                    <h3 class="block-title">1. Add line</h3>
+                                    <p>
+                                        <strong>addLine() <i class="fas fa-function"></i></strong> This function is used to add a line to your data, if you want to refresh the content you add true in the second argument:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">// add a line
+var line = {...};
+var added = apollon[0].addLine(line, refresh);
+// Return true</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="edit-line" class="section-block">
+                                    <h3 class="block-title">2. Edit line</h3>
+                                    <p>
+                                        <strong>editLine() <i class="fas fa-function"></i></strong> if you use an unique ID in a ID column, this function replace the line with ID by the given line:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">// Update a line with ID
+var line = {...};
+apollon[0].editLine(id, line);</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="edit-column" class="section-block">
+                                    <h3 class="block-title">3. Edit column</h3>
+                                    <p>
+                                        <strong>editColumn() <i class="fas fa-function"></i></strong> if you use an unique ID in a ID column, this function replace the column "column" value by the given value:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">// Update a column "column" of line the ID
+var val='test';
+apollon[0].editColumn(id, column, val);</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+
+
+                            <section id="data-delete" class="doc-section">
+                                <h2 class="section-title">Remove</h2>
+                                <div id="remove-line" class="section-block">
+                                    <h3 class="block-title">1. Delete line</h3>
+                                    <p>
+                                        <strong>removeLine() <i class="fas fa-function"></i></strong> if you use an unique ID in a ID column, this function remove the line with ID:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">// Remove a line with ID
+apollon[0].removeLine(id);</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="remove-column" class="section-block">
+                                    <h3 class="block-title">2. Delete column</h3>
+                                    <p>
+                                        <strong>removeColumn() <i class="fas fa-function"></i></strong> if you use an unique ID in a ID column, this function remove the column "column" value of the line with ID:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">// Remove a column "column" of a line with ID
+apollon[0].removeColumn(id, column);</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+
+
+                            <section id="data-change" class="doc-section">
+                                <h2 class="section-title">Change content</h2>
+                                <div id="data-refresh" class="section-block">
+                                    <h3 class="block-title">1. Refresh</h3>
+                                    <p>
+                                        The <strong>refresh() <i class="fas fa-function"></i></strong> function used to reload the content:
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">// Refresh the content
+apollon[0].refresh();</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="data-sort" class="section-block">
+                                    <h3 class="block-title">2. Sort</h3>
+                                    <p>
+                                        <strong>xsort() <i class="fas fa-function"></i></strong> this function is used to sort the cotent by the column "column" to direction "direction":
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">// Sort the content with column column to direction "direction"
+apollon[0].xsort(column, direction);
+// direction==1 or ASC
+// direction==0 or DESC</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="set-Filter" class="section-block">
+                                    <h3 class="block-title">3. Set filter</h3>
+                                    <p>
+                                        <strong>setFilter() <i class="fas fa-function"></i></strong> this function is used to filter the content, show only when the filter "filter" has the value "filter_val":
+                                    </p>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript">// Filter the content with filter "filter" with the value "filter_val"
+apollon[0].setFilter(filter, filter_val);</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+
+                            
+                        </div><!--//content-inner-->
+                    </div><!--//doc-content-->
+                    <div class="doc-sidebar col-md-3 col-12 order-0 d-none d-md-flex">
+                        <div id="doc-nav" class="doc-nav">
+                            <ul id="doc-menu" class="nav doc-menu flex-column sticky">
+                                <li class="nav-item">
+                                    <a class="nav-link scrollto" href="#functions">Functions</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link scrollto" href="#get-data">Get data</a>
+                                </li>
+                                <nav class="nav doc-sub-menu nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link scrollto" href="#get-array">Get array</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link scrollto" href="#get-filtred-array">Get filtred array</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link scrollto" href="#get-line">Get line</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link scrollto" href="#get-column">Get column</a>
+                                    </li>
+                                </nav><!--//nav-->
+                                <li class="nav-item">
+                                    <a class="nav-link scrollto" href="#update-data">Update</a>
+                                </li>
+                                <nav class="nav doc-sub-menu nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link scrollto" href="#add-line">Add line</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link scrollto" href="#edit-line">Edit line</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link scrollto" href="#edit-column">Edit column</a>
+                                    </li>
+                                </nav><!--//nav-->
+                                <li class="nav-item">
+                                    <a class="nav-link scrollto" href="#data-delete">Remove</a>
+                                </li>
+                                <nav class="nav doc-sub-menu nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link scrollto" href="#remove-line">Delete line</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link scrollto" href="#remove-column">Delete column</a>
+                                    </li>
+                                </nav><!--//nav-->
+                                <li class="nav-item">
+                                    <a class="nav-link scrollto" href="#data-change">Change content</a>
+                                </li>
+                                <nav class="nav doc-sub-menu nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link scrollto" href="#data-refresh">Refresh</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link scrollto" href="#data-sort">Sort</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link scrollto" href="#set-Filter">Set filter</a>
+                                    </li>
+                                </nav><!--//nav-->
+                            </ul><!--//doc-menu-->
+                        </div>
+                    </div><!--//doc-sidebar-->
+                </div><!--//doc-body-->              
+            </div><!--//container-->
+        </div><!--//doc-wrapper-->
+        
+        <div id="promo-block" class="promo-block">
+            <div class="container">
+                <div class="promo-block-inner">
+                    <div class="row">
+                        <div class="figure-holder col-lg-5 col-md-6 col-12">
+                            <div class="figure-holder-inner">
+                                <a href="https://themes.3rdwavemedia.com/bootstrap-templates/portfolio/instance-bootstrap-portfolio-theme-for-developers/" target="_blank"><img class="img-fluid" src="assets/images/demo/instance-promo.jpg" alt="Instance Theme" /></a>
+                            </div>
+                        </div><!--//figure-holder-->
+                        <div class="content-holder col-lg-7 col-md-6 col-12">
+                            <div class="content-holder-inner">
+                                <div class="desc">
+                                    <h4 class="content-title"><strong> Apollon - Data analysis jQuery plugin</strong></h4>
+                                    <p>
+                                        Apollon is jquery plugin for data analysis and show from JS object to table, list or any HTML customed code, change order, show with pagination, create graphs, statistics and use dynamic filters, export parts of data...<br/>
+                                        this is the first version.
+                                    </p>
+                                    <a class="btn btn-cta" href="demo.html" target="_blank"><i class="fas fa-external-link-alt"></i> View Demo</a>
+                                </div><!--//desc-->
+                                <div class="author"><a href="https://github.com/TomyVinci">Tomy Vinci</a></div>
+                                <div class="desc">
+                                    <p>
+                                        You can found Tomy vinci in <a href="facebook.com/tomy.vinci.92" target="_blank">Facebook</a> and in <a href="instagram.com/matadorfit" target="_blank">Instagram</a>
+                                    </p>
+                                </div><!--//desc-->
+                            </div><!--//content-holder-inner-->
+                        </div><!--//content-holder-->
+                    </div><!--//row-->
+                </div><!--//promo-block-inner-->  
+            </div><!--//container-->
+        </div><!--//promo-block-->
+        
+    </div><!--//page-wrapper-->
+    
+    <footer id="footer" class="footer text-center">
+        <div class="container">
+            <small class="copyright">Developed with <span class="sr-only">love</span><i class="fas fa-heart"></i> by <a href="https://themes.3rdwavemedia.com/" target="_blank">tomy.vinci</a> for everybody</small>
+            
+        </div><!--//container-->
+    </footer><!--//footer-->
+    
+     
+    <!-- Main Javascript -->          
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/prism/prism.js"></script>      
+    <script type="text/javascript" src="assets/plugins/stickyfill/dist/stickyfill.min.js"></script>      
+    <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script> 
+    <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>                                                          
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    
+</body>
+</html> <!-- https://tomyvinci.github.io/apollon/ -->

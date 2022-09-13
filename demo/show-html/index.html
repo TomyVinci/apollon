@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <title>Apollon</title>
+        <link rel="stylesheet" type="text/css" href="../../dist/css/apollon.min.css" />
+        <link rel="stylesheet" type="text/css" href="../css/cards-demo.css" />
+    </head>
+    <body>
+        <div id="apollon-block"><div id="datatest"></div></div>
+        <script type="text/javascript" src="../../src/jquery.min.js"></script>
+        <script type="text/javascript" src="../Export-table/jsPDF/jspdf.min.js"></script>
+        <script type="text/javascript" src="../Export-table/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+        <script type="text/javascript" src="../Export-table/tableExport.min.js"></script>
+        <script type="text/javascript" src="../flot/jquery.flot.min.js"></script>
+        <script type="text/javascript" src="../../dist/lang/fr.js"></script>
+        <script type="text/javascript" src="../../dist/js/apollon.min.js"></script>
+        <script type="text/javascript">
+            var apollon;
+            $(document).ready(function() {
+                var html_code = '\
+                    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">\
+                        <div class="card text-center card-img-top-1">\
+                            <img class="card-img-top w-100" src="../../flags/[CODE].svg" alt="" width="242" height="161">\
+                            <div class="card-body"> \
+                                <h4 class="card-title mb-3">[NAME]</h4>\
+                                <p class="card-text">[CAPITAL] - [ALPHA_3] phone: +[PHONE]</p>\
+                                <a class="btn btn-primary btn-block" href="blog.html">[CONTINENT]</a>\
+                            </div>\
+                        </div>\
+                    </div>\
+                ';
+                var html_code = '\
+                    <div class="col-sm-12 col-lg-6 col-xl-4">\
+                        <div class="card user-wideget user-wideget-widget widget-user">\
+                            <div class="widget-user-header br-te-5  br-ts-5  bg-primary">\
+                                <h3 class="widget-user-username">[NAME]</h3>\
+                                <h5 class="widget-user-desc">[CAPITAL]</h5>\
+                            </div>\
+                            <div class="widget-user-image">\
+                                <img src="../../flags/[CODE].svg" class="brround" alt="User Avatar" width="90" height="90">\
+                            </div>\
+                            <div class="user-wideget-footer">\
+                                <div class="row">\
+                                    <div class="col-sm-4 border-end">\
+                                        <div class="description-block">\
+                                            <h5 class="description-header">[ALPHA_3]</h5>\
+                                            <span class="description-text">Code</span>\
+                                        </div>\
+                                    </div>\
+                                    <div class="col-sm-4 border-end">\
+                                        <div class="description-block">\
+                                            <h5 class="description-header">[PHONE]</h5>\
+                                            <span class="description-text">Téléphone</span>\
+                                        </div>\
+                                    </div>\
+                                    <div class="col-sm-4">\
+                                        <div class="description-block">\
+                                            <h5 class="description-header">[CONTINENT_CODE]</h5>\
+                                            <span class="description-text">Continent</span>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                            </div>\
+                        </div>\
+                    </div>\
+                ';
+
+                apollon=$('#datatest').apollon({
+                    lang: 'fr', 
+                    'distloc' : '../../dist/',
+                    'ajaxload' : true, 
+                    'loadtxt' : 'Apollon', 
+                    'loading' : 0, 
+                    'tableID'     : 1,
+                    'tableName'   : 'apollon', 
+                    'data'        : {db:1, ax:2}, 
+                    'showmode'    : 'html', 
+                    'showcode'    : html_code, 
+                    'datatype'    : 'ajax', 
+                    'ajaxurl'     : '../../ajax/data.php?id=4',
+                    'functions'   : ['simple_calc', 'statistics', 'var_standevia', 'deviamean', 'abs_deviamean'], 
+                    'columns'     : ['id','code', 'alpha_3', 'name', 'capital', 'continent', 'phone', 'continent_code'], 
+                    'action'      : ['Operations'], 
+                    'toshow'      : [10, 20, 50, 75], 
+                    'sortnbr'     : ['id', 'code', 'phone'], 
+                    'specialsort' : ['code', 'Prix phone'], 
+                    'filters'     : ['continent'], 
+                    'tosort'      : ['id', 'asc'], 
+                    'exportCSV': true, 
+                    'exportXML': true, 
+                    'exportPDF': true, 
+                    'exportSQL': true, 
+                    'callbackAjax'  : function(tt) {
+                        var a=apollon[0].getTable();
+                        console.log(a);                        
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

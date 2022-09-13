@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <title>Apollon</title>
+        <link rel="stylesheet" type="text/css" href="../../dist/css/apollon.min.css" />
+        <link rel="stylesheet" type="text/css" href="../css/cards-demo.css" />
+    </head>
+    <body>
+        <div id="apollon-block"><div id="datatest"></div></div>
+        <script type="text/javascript" src="../../src/jquery.min.js"></script>
+        <script type="text/javascript" src="../Export-table/jsPDF/jspdf.min.js"></script>
+        <script type="text/javascript" src="../Export-table/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+        <script type="text/javascript" src="../Export-table/tableExport.min.js"></script>
+        <script type="text/javascript" src="../flot/jquery.flot.min.js"></script>
+        <script type="text/javascript" src="../../dist/lang/fr.js"></script>
+        <script type="text/javascript" src="../../dist/js/apollon.min.js"></script>
+        <script type="text/javascript">
+            var apollon;
+            $(document).ready(function() {
+                apollon=$('#datatest').apollon({
+                    lang: 'fr', 
+                    'distloc' : '../../dist/',
+                    'ajaxload' : true, 
+                    'loadtxt' : 'Apollon', 
+                    'loading' : 0, 
+                    'tableID'     : 1,
+                    'tableName'   : 'apollon', 
+                    'data'        : {db:1, ax:2}, 
+                    'showmode'    : 'list', 
+                    'datatype'    : 'ajax', 
+                    'ajaxurl'     : '../../ajax/data.php?id=4',
+                    'functions'   : ['simple_calc', 'statistics', 'var_standevia', 'deviamean', 'abs_deviamean'], 
+                    'columns'     : ['id','code', 'alpha_3', 'name', 'capital', 'continent', 'phone', 'continent_code'], 
+                    'action'      : ['Operations'], 
+                    'toshow'      : [10, 20, 50, 75], 
+                    'sortnbr'     : ['id', 'code', 'phone'], 
+                    'specialsort' : ['code', 'Prix phone'], 
+                    'filters'     : ['continent'], 
+                    'tosort'      : ['id', 'asc'], 
+                    'exportCSV': true, 
+                    'exportXML': true, 
+                    'exportPDF': true, 
+                    'exportSQL': true, 
+                    'callbackAjax'  : function(tt) {
+                        var a=apollon[0].getTable();
+                        console.log(a);
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
