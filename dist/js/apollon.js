@@ -917,6 +917,9 @@ if (typeof jQuery != 'undefined') {
 	    					cod+='</ul>';
 	    				}
 	    				$('#apollon-sidebar').html(cod);
+	    				var hs=$('#apollon-sidebar').height(), 
+	    					ht=$('#'+_this+'-allContent').height();
+	    				if (hs>ht) $('#'+_this+'-allContent').css({'height':hs+'px'});
 	    			}
 	    			setPagination(_this);
 	    		},
@@ -1217,6 +1220,9 @@ if (typeof jQuery != 'undefined') {
 					}
 					$('#'+_this+'-filters').addClass('hidden');
 					setPagination(_this);
+    				var hs=$('#apollon-sidebar').height(), 
+    					ht=$('#'+_this+'-allContent').height();
+    				if (hs>ht) $('#'+_this+'-allContent').css({'height':hs+'px'});
 	    		},
 	    		setPagination = function(_this) {
 				    var pg_a=1, pg_b=1, pg_lst=allpages-4, pgx = [1,1,2,3,9,10,12], pagination=a.pagination;
