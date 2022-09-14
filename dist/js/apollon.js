@@ -566,7 +566,7 @@ if (typeof jQuery != 'undefined') {
 	    			}
 	    			cod+='</select></label></div>';
 	    		// Top filters Search
-	    			cod+='<div class="col-md-6 col-sm-12 text-right"><div id="'+_this+'-txt2"><label><input type="search" class="form-control form-control-sm" placeholder="'+lng['search']+'" value="'+searchval+'"><div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups"><div class="btn-group me-2" role="group" aria-label="Second group"><div class="dropdown left-drop" id="dropdown-2"><button id="'+_this+'droptwo-btn" class="dropbtn"><i class="apollon-search"></i></button><div id="'+_this+'droptwo" class="dropdown-content">';
+	    			cod+='<div class="col-md-6 col-sm-12 text-right"><div id="'+_this+'-txt2"><label><input type="search" class="form-control form-control-sm" placeholder="'+lng['search']+'" value="'+((typeof searchval!==undefined)?searchval:'')+'"><div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups"><div class="btn-group me-2" role="group" aria-label="Second group"><div class="dropdown left-drop" id="dropdown-2"><button id="'+_this+'droptwo-btn" class="dropbtn"><i class="apollon-search"></i></button><div id="'+_this+'droptwo" class="dropdown-content">';
 	    			for (var i = 0; i < apollonHead.length; i++) {
 	    				nbr=i+1;
 	    				if (apollonHead[i]==sortcol) {if (coldirect==0) cls = ' tobot'; else cls = ' totop'}

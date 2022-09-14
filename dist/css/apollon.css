@@ -365,7 +365,7 @@ background-color: rgba(255, 255, 255, 0.075);
 .table-responsive-sm {
 display: block;
 width: 100%;
-overflow-x: auto;
+overflow-x: hidden;
 -webkit-overflow-scrolling: touch;
 }
 .table-responsive-sm > .table-bordered {
@@ -377,7 +377,7 @@ border: 0;
 .table-responsive-md {
 display: block;
 width: 100%;
-overflow-x: auto;
+overflow-x: hidden;
 -webkit-overflow-scrolling: touch;
 }
 .table-responsive-md > .table-bordered {
@@ -389,7 +389,7 @@ border: 0;
 .table-responsive-lg {
 display: block;
 width: 100%;
-overflow-x: auto;
+overflow-x: hidden;
 -webkit-overflow-scrolling: touch;
 }
 .table-responsive-lg > .table-bordered {
@@ -401,7 +401,7 @@ border: 0;
 .table-responsive-xl {
 display: block;
 width: 100%;
-overflow-x: auto;
+overflow-x: hidden;
 -webkit-overflow-scrolling: touch;
 }
 .table-responsive-xl > .table-bordered {
@@ -412,7 +412,7 @@ border: 0;
 .table-responsive {
 display: block;
 width: 100%;
-overflow-x: auto;
+overflow-x: hidden;
 -webkit-overflow-scrolling: touch;
 }
 
@@ -423,7 +423,7 @@ border: 0;
 .table-responsive {
 display: block;
 width: 100%;
-overflow-x: auto;
+overflow-x: hidden;
 -webkit-overflow-scrolling: touch;
 }
 
@@ -521,6 +521,8 @@ border: 0;
   position: relative;
   padding: 10px;
   top: 1px;
+  height: auto!important;
+  width: auto!important;
 }
 .apollon-details .col-sm-12 select.form-control {
   top: -13px;
@@ -705,8 +707,8 @@ b.searchword {
 }
 
 table.table-apollon th, table.table-apollon td {
-    padding-top: 18px;
-    padding-bottom: 14px;
+    padding: 18px 2px 14px!important;
+    white-space: break-spaces;
 }
 
 .table100.tomythem-1 table:not(.result-table) th:before {
