@@ -498,11 +498,11 @@ border: 0;
     background-color: #9CD2F8;
 }
 #apollon-block .tomythem-1 .row100:hover td, #apollon-block .tomythem-1 .hov-column-tomythem-1 {
-    color:  #9CD2F8;
+    color:  #1C2C5B;
     background-color: #b3d9f7;
 }
 #apollon-block .tomythem-1 .row100:hover td a:not(.apollonbtn), #apollon-block .tomythem-1 .hov-column-tomythem-1 a:not(.apollonbtn) {
-    color:  #9CD2F8;
+    color:  #1C2C5B;
 }
 
 /*==============
