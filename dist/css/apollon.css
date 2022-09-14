@@ -437,6 +437,9 @@ border: 0;
 
 .apollon-sidebar a.selected {font-weight:bold}
 
+#apollon-block input[type="checkbox"] {margin: 3px 3px 3px 4px!important;}
+#apollon-block label {display: block;margin-bottom:0;}
+
 /*//////////////////////////////////////////////////////////////////
 [ Themes ]*/
 
@@ -482,7 +485,12 @@ border: 0;
 
 #apollon-block .tomythem-1 .pagination.p1 a.is-active {color: #FFF}
 #apollon-block .tomythem-1 .row100 td:hover, #apollon-block .tomythem-1 .row100 td:hover a:not(.apollonbtn) {color: #1C2C5B;}
-.tomythem-1 table.result-table thead tr th {color: whitesmoke;background-color: #6c7ae0;}
+.tomythem-1 table.result-table thead tr th {
+    color: whitesmoke;
+    background-color: #6c7ae0;
+    text-align: center;
+}
+.tomythem-1 table.result-table tbody tr th {text-align: center;}
 
 #apollon-block .tomythem-1 .row100:hover, 
 #apollon-block .tomythem-1 .row100:hover td, 

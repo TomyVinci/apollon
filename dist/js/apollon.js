@@ -504,12 +504,12 @@ if (typeof jQuery != 'undefined') {
 	    				var stat = parseInt($(this).attr('name'));
 	    				if (stat==0) {
 	    					$('body').removeClass('apollontablefull').addClass('apollontablefull');
-	    					$('#'+_this).parent().parent().parent().parent().removeClass('apollontable-fullfixed').addClass('apollontable-fullfixed');
+	    					$('#'+_this+'table').parent().parent().parent().parent().removeClass('apollontable-fullfixed').addClass('apollontable-fullfixed');
 	    					$(this).attr('name', 1);
 	    					$(this).html('<i class="apollon-resize-small"></i>');
 	    				} else {
 	    					$('body').removeClass('apollontablefull');
-	    					$('#'+_this).parent().parent().parent().parent().removeClass('apollontable-fullfixed');
+	    					$('#'+_this+'table').parent().parent().parent().parent().removeClass('apollontable-fullfixed');
 	    					$(this).attr('name', 0);
 	    					$(this).html('<i class="apollon-resize-full"></i>');
 	    				}
@@ -566,7 +566,7 @@ if (typeof jQuery != 'undefined') {
 	    			}
 	    			cod+='</select></label></div>';
 	    		// Top filters Search
-	    			cod+='<div class="col-md-6 col-sm-12 text-right"><div id="'+_this+'-txt2"><label><input type="search" class="form-control form-control-sm" placeholder="'+lng['search']+'" value="'+((typeof searchval!==undefined)?searchval:'')+'"><div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups"><div class="btn-group me-2" role="group" aria-label="Second group"><div class="dropdown left-drop" id="dropdown-2"><button id="'+_this+'droptwo-btn" class="dropbtn"><i class="apollon-search"></i></button><div id="'+_this+'droptwo" class="dropdown-content">';
+	    			cod+='<div class="col-md-6 col-sm-12 text-right"><div id="'+_this+'-txt2"><label><input type="search" class="form-control form-control-sm" placeholder="'+lng['search']+'" value="'+((typeof(searchval)!==undefined && searchval!=null)?searchval:'')+'"><div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups"><div class="btn-group me-2" role="group" aria-label="Second group"><div class="dropdown left-drop" id="dropdown-2"><button id="'+_this+'droptwo-btn" class="dropbtn"><i class="apollon-search"></i></button><div id="'+_this+'droptwo" class="dropdown-content">';
 	    			for (var i = 0; i < apollonHead.length; i++) {
 	    				nbr=i+1;
 	    				if (apollonHead[i]==sortcol) {if (coldirect==0) cls = ' tobot'; else cls = ' totop'}
@@ -911,6 +911,7 @@ if (typeof jQuery != 'undefined') {
 	    					var filterio = filter_list[i];
 	    					for (var j = 0; j < filterio.length; j++) {
 	    						nbractx++;
+	    						filterio[j] = filterio[j].replace(/<\/?[^>]+(>|$)/g, "");
 	    						if (nbractx<=filterMaxNum) cod+='<li class="itm-sect itm-sect-'+cleantotag(i)+'_'+cleantotag(filterio[j])+'"><a class="mail-'+cleantotag(i)+'_'+cleantotag(filterio[j])+'" href="javascript:;" data-typ="filter" data-filter="'+i+'" data-value="'+filterio[j]+'"><span class="apollon-circle-empty"></span>'+filterio[j]+' <em class="text-muted filter-number"></em></a></li>';
 	    					}
 	    					cod+='</ul>';
@@ -1230,7 +1231,7 @@ if (typeof jQuery != 'undefined') {
 				    }
 				    txt+='</ul></div>';
 				    if (allpages==1) txt='';
-				    $('#datatest-txt4').html(txt);
+				    $('#'+_this+'-txt4').html(txt);
 	    			events(_this);
 	    		},
 	    		getPagination = function(_this, c, m) {},
@@ -1356,6 +1357,8 @@ if (typeof jQuery != 'undefined') {
 		    			cod+='</select></label></div><div class="col-md-3 col-sm-12"><label>'+lng['operation']+'<br><select class="custom-select custom-select-sm form-control form-control-sm" id="'+_this+'-insertContent-2"><option value="0">=</option><option value="1">&gt;</option><option value="2">&gt;=</option><option value="3">&lt;</option><option value="4">&lt;=</option><option value="5">!=</option></select></label></div><div class="col-md-3 col-sm-12"><label>'+lng['value']+'<br><input type="text" id="'+_this+'-insertContent-3" class="form-control form-control-sm" placeholder="'+lng['value']+'"></label></div><div class="col-md-3 col-sm-12 text-right"><button type="button" class="btn btn-primary" id="insertContent-btn">'+lng['show']+'</button></div><hr/>';
 		    			el.html(cod);
 
+					    if((jQuery().chosen)) $('#'+_this+'-insertContent-1, #'+_this+'-insertContent-2').chosen({width:'100%'});
+
 		    			$('#insertContent-btn').unbind('click').click(function() {
 		    				el.addClass('hidden');
 		    				var col=$('#'+_this+'-insertContent-1').val(), 
@@ -1398,6 +1401,8 @@ if (typeof jQuery != 'undefined') {
 	    			cod+='<div class="col-md-2 col-sm-12"></div><div class="col-md-3 col-sm-12 text-right"><button type="button" class="btn btn-primary" id="insertContent-btn">'+lng['show']+'</button></div><hr/>';
 	    			el.html(cod);
 
+	    			if((jQuery().chosen)) $('#'+_this+'-insertContent-1').chosen({width:'100%'});
+
 	    			$('#insertContent-btn').unbind('click').click(function() {
 	    				el.addClass('hidden');
 	    				var col=$('#'+_this+'-insertContent-1').val();
@@ -1435,6 +1440,8 @@ if (typeof jQuery != 'undefined') {
 		    			cod+='<div class="col-md-3 col-sm-12"><label>'+lng['typ']+'<br><select class="custom-select custom-select-sm form-control form-control-sm" id="'+_this+'-drawgraph-3">\<option value="0">'+lng['points']+'</option><option value="1">'+lng['lines']+'</option><option value="2">'+lng['lines_bg']+'</option><option value="3">'+lng['lines_step']+'</option><option value="4">'+lng['bars']+'</option></select></label></div>';
 		    			cod+='<div class="col-md-3 col-sm-12 text-right"><button type="button" class="btn btn-primary" id="drawgraph-btn">'+lng['draw']+'</button></div><hr/>';
 		    			el.html(cod);
+
+		    			if((jQuery().chosen)) $('#'+_this+'-drawgraph-1, #'+_this+'-drawgraph-2, #'+_this+'-drawgraph-3').chosen({width:'100%'});
 
 		    			$('#drawgraph-btn').unbind('click').click(function() {
 		    				var abs=$('#'+_this+'-drawgraph-1').val(), 
