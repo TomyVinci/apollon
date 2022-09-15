@@ -47,6 +47,8 @@ var lng = {
         'lines_step':'Linien - Schritte', 
         'bars':'Barren', 
         'circle':'Kreis', 
-        'nofilter':'Löschen'
+        'nofilter':'Löschen', 
+        'true':'Ja', 
+        'false':'Nein'
     }
 }

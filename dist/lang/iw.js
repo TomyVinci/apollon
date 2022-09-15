@@ -47,6 +47,8 @@ var lng = {
         'lines_step':'שורות - שלב', 
         'bars':'סורגים', 
         'circle':'מעגל', 
-        'nofilter':'כדי למחוק'
+        'nofilter':'כדי למחוק', 
+        'true':'כן', 
+        'false':'לא'
     }
 }

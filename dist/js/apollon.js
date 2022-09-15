@@ -126,7 +126,9 @@ if (typeof jQuery != 'undefined') {
 			        'lines_step':'Lines - steps', 
 			        'bars':'Bars', 
 			        'circle':'Circle', 
-			        'nofilter':'Delete'
+			        'nofilter':'Delete', 
+			        'true':'Yes', 
+			        'false':'Non'
 				}, 
 				// Language by default
 				lang: 'en'
@@ -285,7 +287,7 @@ if (typeof jQuery != 'undefined') {
 	    			$('.apollon-sidebar a[data-filter="'+fltr+'"][data-value="'+fltr_val+'"]').parent().parent().find('a span').removeClass('apollon-circle').removeClass('apollon-circle-empty').addClass('apollon-circle-empty');
 	    			$('.apollon-sidebar a[data-filter="'+fltr+'"][data-value="'+fltr_val+'"] span').addClass('apollon-circle').removeClass('apollon-circle-empty');
 
-	    			var uls=$('#apollon-sidebar ul'), ul;
+	    			var uls=$('#'+_this+'apollon-sidebar ul'), ul;
 
 	    			for (var i = 0; i < uls.length; i++) {
 	    				ul = uls[i];
@@ -299,7 +301,11 @@ if (typeof jQuery != 'undefined') {
 	    				for (var i in apollon_all) {
 	    					lin = apollon_all[i], exs=1;
 	    					for (var j in condi) {
-	    						if (lin[j]!=condi[j]) exs=0;
+	    						if (condi[j]=='true' || condi[j]=='false') {
+	    							if ((condi[j]=='true' && lin[j]!=true) || (condi[j]=='false' && lin[j]!=false)) exs=0;
+	    						} else {
+	    							if (lin[j]!=condi[j]) exs=0;
+	    						}
 	    					}
 	    					if (exs==1) appolo.push(apollon_all[i]);
 	    				}
@@ -539,6 +545,12 @@ if (typeof jQuery != 'undefined') {
 							ccc=document.getElementsByClassName('dropbtn')[2].contains(event.target);
 						if (!aaa && !bbb && !ccc) hidedrop(_this);
 					}
+					setTimeout(function() {
+	    				var hs=$('#'+_this+'apollon-sidebar').height(), 
+	    					ht=$('#'+_this+'-allContent').height();
+	    				if (hs>ht) $('#'+_this+'-allContent').css({'height':hs+'px'});
+		    					else $('#'+_this+'-allContent').css({'height':'auto'});
+					}, 1500);
 	    		},
 	    		hidedrop = function(_this) {$(".dropdown-content").removeClass("show");}, 
 	    		dropone = function(_this) {$('#'+_this+'dropone').removeClass("show").addClass("show");}, 
@@ -577,7 +589,7 @@ if (typeof jQuery != 'undefined') {
 	    			cod+='<div class="row apollon-filters hidden" id="'+_this+'-filters"></div></div><div class="apollon-content table100 tomythem-'+a.theme+'">';
 	    		// Sidebar
 	    			var filters=a.filters, fltr_ex=(filters.length>0)?true:false;
-	    			cod+='<div class="apollon-sidebar'+((!fltr_ex)?' hidden':'')+'" id="apollon-sidebar"></div>';
+	    			cod+='<div class="apollon-sidebar'+((!fltr_ex)?' hidden':'')+'" id="'+_this+'apollon-sidebar"></div>';
 	    		// Content
 	    			cod+='<div class="table-responsive'+((fltr_ex)?' withsidebar':'')+'" id="'+_this+'-allContent">';
 	    			cod+='</div></div>';
@@ -663,8 +675,6 @@ if (typeof jQuery != 'undefined') {
 		    				cod = '<hr class="small-hr" /><dl class="tomylist dl-horizontal" wfd-id="10"><dt>!!!</dt><dd>'+lng['nodata']+'</dd></dl><hr class="small-hr" />';
 		    				$('#'+_this+'-txt3').html(lng['nodata']);
 		    				$('#'+_this+'-allContent').html(cod);
-		    				$('#'+_this+'-allContent').removeClass('withsidebar');
-		    				$('#'+_this+'-allContent').parent().find('.apollon-sidebar').remove();
 		    			}
 
 					} else if (a.showmode=='html') {
@@ -757,8 +767,6 @@ if (typeof jQuery != 'undefined') {
 		    				cod = '<hr class="small-hr" /><dl class="tomylist dl-horizontal" wfd-id="10"><dt>!!!</dt><dd>'+lng['nodata']+'</dd></dl><hr class="small-hr" />';
 		    				$('#'+_this+'-txt3').html(lng['nodata']);
 		    				$('#'+_this+'-allContent').html(cod);
-		    				$('#'+_this+'-allContent').removeClass('withsidebar');
-		    				$('#'+_this+'-allContent').parent().find('.apollon-sidebar').remove();
 
 		    			}
 
@@ -870,8 +878,6 @@ if (typeof jQuery != 'undefined') {
 		    				$('#'+_this+'-allContent table tbody').html(cod);
 		    				$('#'+_this+'-txt3').html(lng['nodata']);
 		    				$('#'+_this+' tbody').html(cod);
-		    				$('#'+_this+'-allContent').removeClass('withsidebar');
-		    				$('#'+_this+'-allContent').parent().find('.apollon-sidebar').remove();
 		    			}
 					}
 	    			addAccessoir(_this);
@@ -907,17 +913,20 @@ if (typeof jQuery != 'undefined') {
 	    			if (fltr_ex) {
 	    				cod='', nbractx=0;
 	    				for (i in filter_list) {
-	    					cod+='<ul><li><h5>'+i+'</h5></li><li class="itm-sect itm-sect-no_filter"><a class="mail-no_filter" href="javascript:;" data-typ="filter" data-filter="" data-value=""><span class="apollon-circle"></span>nofilter <em class="text-muted filter-number"></em></a></li>';
-	    					var filterio = filter_list[i];
+	    					cod+='<ul><li><h5>'+i+'</h5></li><li class="itm-sect itm-sect-no_filter"><a class="mail-no_filter" href="javascript:;" data-typ="filter" data-filter="" data-value=""><span class="apollon-circle"></span>'+lng['nofilter']+' <em class="text-muted filter-number"></em></a></li>';
+	    					var filterio = filter_list[i], filteriov;
 	    					for (var j = 0; j < filterio.length; j++) {
-	    						if (filterio[j].length>0) nbractx++;
-	    						filterio[j] = filterio[j].replace(/<\/?[^>]+(>|$)/g, "");
-	    						if (nbractx<=filterMaxNum && filterio[j].length>0) cod+='<li class="itm-sect itm-sect-'+cleantotag(i)+'_'+cleantotag(filterio[j])+'"><a class="mail-'+cleantotag(i)+'_'+cleantotag(filterio[j])+'" href="javascript:;" data-typ="filter" data-filter="'+i+'" data-value="'+filterio[j]+'"><span class="apollon-circle-empty"></span>'+filterio[j]+' <em class="text-muted filter-number"></em></a></li>';
+	    						filteriov=filterio[j];
+	    						if (filteriov===true) filteriov=lng['true'];
+	    						if (filteriov===false) filteriov=lng['false'];
+	    						if (filteriov.length>0) nbractx++;
+	    						filteriov = filteriov.replace(/<\/?[^>]+(>|$)/g, "");
+	    						if (nbractx<=filterMaxNum && filteriov.length>0) cod+='<li class="itm-sect itm-sect-'+cleantotag(i)+'_'+cleantotag(filteriov)+'"><a class="mail-'+cleantotag(i)+'_'+cleantotag(filteriov)+'" href="javascript:;" data-typ="filter" data-filter="'+i+'" data-value="'+((filteriov==lng['true'])?'true':((filteriov==lng['false'])?'false':filteriov))+'"><span class="apollon-circle-empty"></span>'+filteriov+' <em class="text-muted filter-number"></em></a></li>';
 	    					}
 	    					cod+='</ul>';
 	    				}
-	    				$('#apollon-sidebar').html(cod);
-	    				var hs=$('#apollon-sidebar').height(), 
+	    				$('#'+_this+'apollon-sidebar').html(cod);
+	    				var hs=$('#'+_this+'apollon-sidebar').height(), 
 	    					ht=$('#'+_this+'-allContent').height();
 	    				if (hs>ht) $('#'+_this+'-allContent').css({'height':hs+'px'});
 	    					else $('#'+_this+'-allContent').css({'height':'auto'});
@@ -1007,8 +1016,6 @@ if (typeof jQuery != 'undefined') {
 		    				cod = '<hr class="small-hr" /><dl class="tomylist dl-horizontal" wfd-id="10"><dt>!!!</dt><dd>'+lng['nodata']+'</dd></dl><hr class="small-hr" />';
 		    				$('#'+_this+'-txt3').html(lng['nodata']);
 		    				$('#'+_this+'-allContent').html(cod);
-		    				$('#'+_this+'-allContent').removeClass('withsidebar');
-		    				$('#'+_this+'-allContent').parent().find('.apollon-sidebar').remove();
 		    			}
 
 					} else if (showmode=='html') {
@@ -1101,8 +1108,6 @@ if (typeof jQuery != 'undefined') {
 		    				cod = '<hr class="small-hr" /><dl class="tomylist dl-horizontal" wfd-id="10"><dt>!!!</dt><dd>'+lng['nodata']+'</dd></dl><hr class="small-hr" />';
 		    				$('#'+_this+'-txt3').html(lng['nodata']);
 		    				$('#'+_this+'-allContent').html(cod);
-		    				$('#'+_this+'-allContent').removeClass('withsidebar');
-		    				$('#'+_this+'-allContent').parent().find('.apollon-sidebar').remove();
 
 		    			}
 
@@ -1215,13 +1220,11 @@ if (typeof jQuery != 'undefined') {
 		    				$('#'+_this+'-allContent table tbody').html(cod);
 		    				$('#'+_this+'-txt3').html(lng['nodata']);
 		    				$('#'+_this+' tbody').html(cod);
-		    				$('#'+_this+'-allContent').removeClass('withsidebar');
-		    				$('#'+_this+'-allContent').parent().find('.apollon-sidebar').remove();
 		    			}
 					}
 					$('#'+_this+'-filters').addClass('hidden');
 					setPagination(_this);
-    				var hs=$('#apollon-sidebar').height(), 
+    				var hs=$('#'+_this+'apollon-sidebar').height(), 
     					ht=$('#'+_this+'-allContent').height();
     				if (hs>ht) $('#'+_this+'-allContent').css({'height':hs+'px'});
 	    					else $('#'+_this+'-allContent').css({'height':'auto'});

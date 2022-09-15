@@ -47,6 +47,8 @@ var lng = {
         'lines_step':'Линии - 步骤', 
         'bars':'бары', 
         'circle':'Круг', 
-        'nofilter':'Удалить'
+        'nofilter':'Удалить', 
+        'true':'да', 
+        'false':'нет'
     }
 }

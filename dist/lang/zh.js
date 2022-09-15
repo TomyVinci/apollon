@@ -47,6 +47,8 @@ var lng = {
         'lines_step':'线 - 步骤', 
         'bars':'酒吧', 
         'circle':'圆圈', 
-        'nofilter':'删除'
+        'nofilter':'删除', 
+        'true':'是的', 
+        'false':'不'
     }
 }

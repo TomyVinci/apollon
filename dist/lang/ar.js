@@ -47,6 +47,8 @@ var lng = {
         'lines_step':'خطوط - مراحل', 
         'bars':'قضبان', 
         'circle':'دائرة', 
-        'nofilter':'حذف'
+        'nofilter':'حذف', 
+        'true':'نعم', 
+        'false':'لا'
     }
 }

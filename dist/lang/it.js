@@ -47,6 +47,8 @@ var lng = {
         'lines_step':'Linee - passi', 
         'bars':'Barre', 
         'circle':'Cerchio', 
-        'nofilter':'Elimina'
+        'nofilter':'Elimina', 
+        'true':'Si', 
+        'false':'No'
     }
 }
