@@ -1554,7 +1554,7 @@ if (typeof jQuery != 'undefined') {
 	    		},
 	    		funcStat = function(_this) {
 	    			if (numericexist==1) {
-	    				var dt_nbr=0, dat_x={'sum':{},'avg':{},'max':{},'min':{},'ext':{},'nbr':{},'q1':{},'q2':{},'q3':{},'iqr':{}}, lin, data_z={},
+	    				var dt_nbr=0, dt_val, dat_x={'sum':{},'avg':{},'max':{},'min':{},'ext':{},'nbr':{},'q1':{},'q2':{},'q3':{},'iqr':{}}, lin, data_z={},
 	    					dt_nm = {'sum':lng['sum'],'avg':lng['avg'],'max':lng['max'],'min':lng['min'],'nbr':lng['nbr'],'ext':lng['ext'],'q1':lng['q1'],'q2':lng['q2'],'q3':lng['q3'],'iqr':lng['iqr']};
 	    				var el=$('#'+_this+'-filters');
 	    				el.removeClass('hidden');
@@ -1578,12 +1578,16 @@ if (typeof jQuery != 'undefined') {
 						for (var j = 0; j < apollon.length; j++) {
 							dt_nbr++;
 							for (var i = 0; i < numericcolon.length; i++) {
+								dt_val = apollon[j][numericcolon[i]];
+								dt_val=dt_val.replace(/ /g,'');
+								dt_val=parseFloat(dt_val);
+
 								dat_x['nbr'][numericcolon[i]]=dt_nbr;
-								dat_x['sum'][numericcolon[i]]+=parseFloat(apollon[j][numericcolon[i]]);
-								if (parseFloat(apollon[j][numericcolon[i]])>dat_x['max'][numericcolon[i]]) dat_x['max'][numericcolon[i]]=parseFloat(apollon[j][numericcolon[i]]);
-								if (dt_nbr==1) {dat_x['min'][numericcolon[i]]=parseFloat(apollon[j][numericcolon[i]]);}
-									else if (parseFloat(apollon[j][numericcolon[i]])<dat_x['min'][numericcolon[i]]) dat_x['min'][numericcolon[i]]=parseFloat(apollon[j][numericcolon[i]]);
-								data_z[numericcolon[i]].push(parseFloat(apollon[j][numericcolon[i]]));
+								dat_x['sum'][numericcolon[i]]+=dt_val;
+								if (dt_val>dat_x['max'][numericcolon[i]]) dat_x['max'][numericcolon[i]]=dt_val;
+								if (dt_nbr==1) {dat_x['min'][numericcolon[i]]=dt_val;}
+									else if (dt_val<dat_x['min'][numericcolon[i]]) dat_x['min'][numericcolon[i]]=dt_val;
+								data_z[numericcolon[i]].push(dt_val);
 							}
 						}
 						var _q1=Math.ceil(dt_nbr/4)-1, _q3=Math.floor(dt_nbr*3/4)-1;
@@ -1715,28 +1719,12 @@ if (typeof jQuery != 'undefined') {
 				apollonHead = columns;
 				aplnheadshow = columns;
 				aplnheadsrch = columns;
-				if (typeof(Storage) !== "undefined") {
-					var tblck_1='apollontable_'+tableID+'_1';
-					var tta=window.localStorage.getItem(tblck_1);
-					if (typeof tta !=='undefined' && tta !== null) aplnheadshow=JSON.parse(tta);
-					var tblck_2='apollontable_'+tableID+'_2';
-					var tta=window.localStorage.getItem(tblck_2);
-					if (typeof tta !=='undefined' && tta !== null) aplnheadsrch=JSON.parse(tta);
-				}
 			} else {
 	    		var th = $(this).find('thead tr th');
 	    		for (var i = 0; i < th.length; i++) apollonHead.push($(th[i]).html());
 				a.columns = apollonHead;
 				aplnheadshow = apollonHead;
 				aplnheadsrch = apollonHead;
-				if (typeof(Storage) !== "undefined") {
-					var tblck_1='apollontable_'+tableID+'_1';
-					var tta=window.localStorage.getItem(tblck_1);
-					if (typeof tta !=='undefined' && tta !== null) aplnheadshow=JSON.parse(tta);
-					var tblck_2='apollontable_'+tableID+'_2';
-					var tta=window.localStorage.getItem(tblck_2);
-					if (typeof tta !=='undefined' && tta !== null) aplnheadsrch=JSON.parse(tta);
-				}
 			}
 
 			// Sort
