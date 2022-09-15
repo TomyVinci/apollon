@@ -910,9 +910,9 @@ if (typeof jQuery != 'undefined') {
 	    					cod+='<ul><li><h5>'+i+'</h5></li><li class="itm-sect itm-sect-no_filter"><a class="mail-no_filter" href="javascript:;" data-typ="filter" data-filter="" data-value=""><span class="apollon-circle"></span>nofilter <em class="text-muted filter-number"></em></a></li>';
 	    					var filterio = filter_list[i];
 	    					for (var j = 0; j < filterio.length; j++) {
-	    						nbractx++;
+	    						if (filterio[j].length>0) nbractx++;
 	    						filterio[j] = filterio[j].replace(/<\/?[^>]+(>|$)/g, "");
-	    						if (nbractx<=filterMaxNum) cod+='<li class="itm-sect itm-sect-'+cleantotag(i)+'_'+cleantotag(filterio[j])+'"><a class="mail-'+cleantotag(i)+'_'+cleantotag(filterio[j])+'" href="javascript:;" data-typ="filter" data-filter="'+i+'" data-value="'+filterio[j]+'"><span class="apollon-circle-empty"></span>'+filterio[j]+' <em class="text-muted filter-number"></em></a></li>';
+	    						if (nbractx<=filterMaxNum && filterio[j].length>0) cod+='<li class="itm-sect itm-sect-'+cleantotag(i)+'_'+cleantotag(filterio[j])+'"><a class="mail-'+cleantotag(i)+'_'+cleantotag(filterio[j])+'" href="javascript:;" data-typ="filter" data-filter="'+i+'" data-value="'+filterio[j]+'"><span class="apollon-circle-empty"></span>'+filterio[j]+' <em class="text-muted filter-number"></em></a></li>';
 	    					}
 	    					cod+='</ul>';
 	    				}
@@ -920,6 +920,7 @@ if (typeof jQuery != 'undefined') {
 	    				var hs=$('#apollon-sidebar').height(), 
 	    					ht=$('#'+_this+'-allContent').height();
 	    				if (hs>ht) $('#'+_this+'-allContent').css({'height':hs+'px'});
+	    					else $('#'+_this+'-allContent').css({'height':'auto'});
 	    			}
 	    			setPagination(_this);
 	    		},
@@ -1223,6 +1224,7 @@ if (typeof jQuery != 'undefined') {
     				var hs=$('#apollon-sidebar').height(), 
     					ht=$('#'+_this+'-allContent').height();
     				if (hs>ht) $('#'+_this+'-allContent').css({'height':hs+'px'});
+	    					else $('#'+_this+'-allContent').css({'height':'auto'});
 	    		},
 	    		setPagination = function(_this) {
 				    var pg_a=1, pg_b=1, pg_lst=allpages-4, pgx = [1,1,2,3,9,10,12], pagination=a.pagination;
