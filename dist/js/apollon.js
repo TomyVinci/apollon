@@ -634,7 +634,7 @@ if (typeof jQuery != 'undefined') {
 				    						cod += '<img'+img_src+img_alt+img_idd+img_cls+' />';
 
 							    		} else if (trufalse.indexOf(apollonHead[j])>=0) {
-							    			cod += (val===true) ? '<i class="demo-icon icon-ok-circled"></i>' : '<i class="demo-icon icon-circle-empty"></i>';
+							    			cod += (val===true) ? '<i class="apollon-ok-circled"></i>' : '<i class="apollon-circle-empty"></i>';
 							    		}
 							    		/* else if (action.indexOf(apollonHead[j])>=0) {
 							    		}*/
@@ -741,7 +741,7 @@ if (typeof jQuery != 'undefined') {
 				    						cod += '<img'+img_src+img_alt+img_idd+img_cls+' />';
 
 							    		} else if (trufalse.indexOf(apollonHead[j])>=0) {
-							    			cod += (val===true) ? '<i class="demo-icon icon-ok-circled"></i>' : '<i class="demo-icon icon-circle-empty"></i>';
+							    			cod += (val===true) ? '<i class="apollon-ok-circled"></i>' : '<i class="apollon-circle-empty"></i>';
 							    		} else  {
 											cod += val;
 				    					}
@@ -839,7 +839,7 @@ if (typeof jQuery != 'undefined') {
 				    						cod += '<img'+img_src+img_alt+img_idd+img_cls+' />';
 
 							    		} else if (trufalse.indexOf(apollonHead[j])>=0) {
-							    			cod += (val===true) ? '<i class="demo-icon icon-ok-circled"></i>' : '<i class="demo-icon icon-circle-empty"></i>';
+							    			cod += (val===true) ? '<i class="apollon-ok-circled"></i>' : '<i class="apollon-circle-empty"></i>';
 							    		}
 							    		/* else if (action.indexOf(apollonHead[j])>=0) {
 							    		}*/
@@ -977,7 +977,7 @@ if (typeof jQuery != 'undefined') {
 				    						cod += '<img'+img_src+img_alt+img_idd+img_cls+' />';
 
 							    		} else if (trufalse.indexOf(apollonHead[j])>=0) {
-							    			cod += (val===true) ? '<i class="demo-icon icon-ok-circled"></i>' : '<i class="demo-icon icon-circle-empty"></i>';
+							    			cod += (val===true) ? '<i class="apollon-ok-circled"></i>' : '<i class="apollon-circle-empty"></i>';
 							    		}
 							    		/* else if (action.indexOf(apollonHead[j])>=0) {
 							    		}*/
@@ -1084,7 +1084,7 @@ if (typeof jQuery != 'undefined') {
 				    						cod += '<img'+img_src+img_alt+img_idd+img_cls+' />';
 
 							    		} else if (trufalse.indexOf(apollonHead[j])>=0) {
-							    			cod += (val===true) ? '<i class="demo-icon icon-ok-circled"></i>' : '<i class="demo-icon icon-circle-empty"></i>';
+							    			cod += (val===true) ? '<i class="apollon-ok-circled"></i>' : '<i class="apollon-circle-empty"></i>';
 							    		} else  {
 											cod += val;
 				    					}
@@ -1183,7 +1183,7 @@ if (typeof jQuery != 'undefined') {
 				    						cod += '<img'+img_src+img_alt+img_idd+img_cls+' />';
 
 							    		} else if (trufalse.indexOf(apollonHead[j])>=0) {
-							    			cod += (val===true) ? '<i class="demo-icon icon-ok-circled"></i>' : '<i class="demo-icon icon-circle-empty"></i>';
+							    			cod += (val===true) ? '<i class="apollon-ok-circled"></i>' : '<i class="apollon-circle-empty"></i>';
 							    		}
 							    		/* else if (action.indexOf(apollonHead[j])>=0) {
 							    		}*/
@@ -1833,10 +1833,13 @@ if (typeof jQuery != 'undefined') {
 				sortcol = window.localStorage.getItem(tblck_c);
 				var tblck_n='apollontable_'+tableID+'_n';
 				nbrperpage = window.localStorage.getItem(tblck_n);
+				var toshow=a.toshow;
+				if (!nbrperpage) nbrperpage=toshow[0];
 				var tblck_r='apollontable_'+tableID+'_r';
 				searchval = window.localStorage.getItem(tblck_r);
 				var tblck_p='apollontable_'+tableID+'_p';
 				pageact = window.localStorage.getItem(tblck_p);
+				if (!pageact) pageact=1;
 			}
 
 			/*==============
