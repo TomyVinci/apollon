@@ -208,44 +208,24 @@ if (typeof jQuery != 'undefined') {
 	                12:{'file':'ball-triangle', 'width':50, 'color':'E74C3C'}
 	    		}, 
 				predicateBy = function(prop, dirkt) {
-					var sortnbr = a.sortnbr, specialsort = a.specialsort, xx, yy, tsts = prop[0].replace('sort_', '');
-					if (a.sortnbr!="Bon") {
-						return function(b,c) {
-							xx = b[prop];
-							yy = c[prop];
-							if (typeof xx !=='number' && typeof yy !=='number') {
-								if ( sortnbr.indexOf(prop)>=0 || specialsort.indexOf(tsts)>=0 ) {
-									xx = (typeof xx !=='undefined' && xx != null) ? xx.toString().replace(' ', '') : 0;
-									yy = (typeof yy !=='undefined' && yy != null) ? yy.toString().replace(' ', '') : 0;
-									xx = parseInt(xx);yy = parseInt(yy);
-								}
-							}
-							if (prop=='ordre') {
-								xx = parseInt(xx);yy = parseInt(yy);
-							}
-							if (dirkt==1) {
-								if (xx > yy) return 1;
-								else if(xx < yy) return -1;
-						    	return 0;
-							} else {
-								if (xx < yy) return 1;
-								else if(xx > yy) return -1;
-						    	return 0;
-							}
+					var sortnbr = a.sortnbr, specialsort = a.specialsort, xx, yy, tsts = prop.replace('sort_', '');
+					return function(b,c) {
+						xx = b[prop];
+						yy = c[prop];
+						if ( sortnbr.indexOf(tsts)>=0 || specialsort.indexOf(tsts)>=0 ) {
+							xx = (xx) ? xx.toString().replace(' ', '') : 0;
+							yy = (yy) ? yy.toString().replace(' ', '') : 0;
+							xx = parseFloat(xx);
+							yy = parseFloat(yy);
 						}
-					} else {
-						return function(b,c) {
-							xx = b[prop];
-							yy = c[prop];
-							if (dirkt==1) {
-								if (xx > yy) return 1;
-								else if(xx < yy) return -1;
-						    	return 0;
-							} else {
-								if (xx < yy) return 1;
-								else if(xx > yy) return -1;
-						    	return 0;
-							}
+						if (dirkt==1 || dirkt=='asc') {
+							if (xx > yy) return 1;
+							else if(xx < yy) return -1;
+					    	return 0;
+						} else {
+							if (xx < yy) return 1;
+							else if(xx > yy) return -1;
+					    	return 0;
 						}
 					}
 				}, 
@@ -262,69 +242,107 @@ if (typeof jQuery != 'undefined') {
 					apollon.sort( predicateBy(sortcol, coldirect) );
 		    		createIntCont(_this);
 	    		},
-	    		tosort = function(_this) {
-					sortcol = a.tosort;
-					var specialsort = a.specialsort;
-					coldirect = 1 - coldirect;
-					if (specialsort.indexOf(sortcol)>=0) sortcol = 'sort_'+sortcol;
-					if (typeof(Storage) !== "undefined") {
-						var tblck_o='apollontable_'+tableID+'_o', tblck_c='apollontable_'+tableID+'_c';
-						window.localStorage.setItem(tblck_o, coldirect);
-						window.localStorage.setItem(tblck_c, sortcol);
-					}
-					apollon.sort( predicateBy(sortcol, coldirect) );
-					setContent(_this);
-	    		},
 	    		cleantotag = function(txt) {
 	    			txt = txt.toLowerCase();
 	    			txt = txt.replace(/[^0-9a-z]/gi,'');
 	    			return txt;
 	    		},
 	    		setFilter = function(fltr, fltr_val) {
-	    			var condi={}, fl_a='', fl_b='';
-	    			$('.apollon-sidebar a[data-filter="'+fltr+'"][data-value="'+fltr_val+'"]').parent().parent().find('a').removeClass('selected');
-	    			$('.apollon-sidebar a[data-filter="'+fltr+'"][data-value="'+fltr_val+'"]').addClass('selected');
-	    			$('.apollon-sidebar a[data-filter="'+fltr+'"][data-value="'+fltr_val+'"]').parent().parent().find('a span').removeClass('apollon-circle').removeClass('apollon-circle-empty').addClass('apollon-circle-empty');
-	    			$('.apollon-sidebar a[data-filter="'+fltr+'"][data-value="'+fltr_val+'"] span').addClass('apollon-circle').removeClass('apollon-circle-empty');
+	    			var condi={}, fl_a='', fl_b='', seln = $('select.itm-sect-sel').length;
+	    			$('#'+_this+'-allContent').css({'height':'auto'});
+	    			if (seln==0) {
+		    			$('.apollon-sidebar a[data-filter="'+fltr+'"][data-value="'+fltr_val+'"]').parent().parent().find('a').removeClass('selected');
+		    			$('.apollon-sidebar a[data-filter="'+fltr+'"][data-value="'+fltr_val+'"]').addClass('selected');
+		    			$('.apollon-sidebar a[data-filter="'+fltr+'"][data-value="'+fltr_val+'"]').parent().parent().find('a span').removeClass('apollon-circle').removeClass('apollon-circle-empty').addClass('apollon-circle-empty');
+		    			$('.apollon-sidebar a[data-filter="'+fltr+'"][data-value="'+fltr_val+'"] span').addClass('apollon-circle').removeClass('apollon-circle-empty');
 
-	    			var uls=$('#'+_this+'apollon-sidebar ul'), ul;
+	    				var uls=$('#'+_this+'apollon-sidebar ul'), ul;
 
-	    			for (var i = 0; i < uls.length; i++) {
-	    				ul = uls[i];
-	    				fl_a=$(ul).find('li a.selected').attr('data-filter');
-	    				fl_b=$(ul).find('li a.selected').attr('data-value');
-	    				if (fl_a!==undefined && fl_b!==undefined) if (fl_a.length>0 && fl_b.length>0) condi[fl_a]=fl_b;
-	    			}
+		    			for (var i = 0; i < uls.length; i++) {
+		    				ul = uls[i];
+		    				fl_a=$(ul).find('li a.selected').attr('data-filter');
+		    				fl_b=$(ul).find('li a.selected').attr('data-value');
+		    				if (fl_a!==undefined && fl_b!==undefined) if (fl_a.length>0 && fl_b.length>0) condi[fl_a]=fl_b;
+		    			}
 
-	    			if (Object.keys(condi).length>0) {
-	    				var appolo = [], linn, exs;
-	    				for (var i in apollon_all) {
-	    					lin = apollon_all[i], exs=1;
-	    					for (var j in condi) {
-	    						if (condi[j]=='true' || condi[j]=='false') {
-	    							if ((condi[j]=='true' && lin[j]!=true) || (condi[j]=='false' && lin[j]!=false)) exs=0;
-	    						} else {
-	    							if (lin[j]!=condi[j]) exs=0;
-	    						}
-	    					}
-	    					if (exs==1) appolo.push(apollon_all[i]);
-	    				}
-						apollon = appolo;
-	    				allitems = apollon.length;
-	    				allpages = Math.ceil(allitems/nbrperpage);
-	    				pageact = 1;
-	    				firstitem = 0;
-	    				toitem = (allitems>nbrperpage) ? nbrperpage : allitems ;
-						createIntCont(_this);
+		    			if (Object.keys(condi).length>0) {
+		    				var appolo = [], lin={}, exs=1, notag='';
+		    				for (var i in apollon_all) {
+		    					lin = apollon_all[i];
+		    					exs=1;
+		    					for (var j in condi) {
+		    						if (condi[j]=='true' || condi[j]=='false') {
+		    							if ((condi[j]=='true' && lin[j]!=true) || (condi[j]=='false' && lin[j]!=false)) exs=0;
+		    						} else {
+		    							notag=lin[j];
+		    							notag = typeof notag === 'string' ? notag.replace(/<\/?[^>]+(>|$)/g, "") : '';
+		    							if (condi[j]!='no_filter' && (notag === undefined || notag!=condi[j])) exs=0;
+		    						}
+		    					}
+		    					if (exs==1) appolo.push(apollon_all[i]);
+		    				}
+							apollon = appolo;
+		    				allitems = apollon.length;
+		    				allpages = Math.ceil(allitems/nbrperpage);
+		    				pageact = 1;
+		    				firstitem = 0;
+		    				toitem = (allitems>nbrperpage) ? nbrperpage : allitems ;
+							createIntCont(_this);
+		    			} else {
+							apollon = apollon_all;
+		    				allitems = apollon_all.length;
+		    				allpages = Math.ceil(allitems/nbrperpage);
+		    				pageact = 1;
+		    				firstitem = 0;
+		    				toitem = (allitems>nbrperpage) ? nbrperpage : allitems ;
+							createIntCont(_this);
+		    			}
 	    			} else {
-						apollon = apollon_all;
-	    				allitems = apollon_all.length;
-	    				allpages = Math.ceil(allitems/nbrperpage);
-	    				pageact = 1;
-	    				firstitem = 0;
-	    				toitem = (allitems>nbrperpage) ? nbrperpage : allitems ;
-						createIntCont(_this);
+	    				var uls=$('select.itm-sect-sel'), ul;
+		    			for (var i = 0; i < uls.length; i++) {
+		    				ul = uls[i];
+		    				fl_a=$(ul).attr('name');
+		    				fl_b=$(ul).find(":selected").val();
+		    				if (fl_a!==undefined && fl_b!==undefined) if (fl_a.length>0 && fl_b.length>0) condi[fl_a]=fl_b;
+		    			}
+
+		    			if (Object.keys(condi).length>0) {
+		    				var appolo = [], lin={}, exs=1, notag='';
+		    				for (var i in apollon_all) {
+		    					lin = apollon_all[i];
+		    					exs=1;
+		    					for (var j in condi) {
+		    						if (condi[j]=='true' || condi[j]=='false') {
+		    							if ((condi[j]=='true' && lin[j]!=true) || (condi[j]=='false' && lin[j]!=false)) exs=0;
+		    						} else {
+		    							notag=lin[j];
+		    							notag = (typeof(notag) === 'string') ? notag.replace(/<\/?[^>]+(>|$)/g, "") : notag;
+		    							if (condi[j]!='no_filter' && (notag === undefined || notag!=condi[j])) exs=0;
+		    						}
+		    					}
+		    					if (exs==1) appolo.push(apollon_all[i]);
+		    				}
+							apollon = appolo;
+		    				allitems = apollon.length;
+		    				allpages = Math.ceil(allitems/nbrperpage);
+		    				pageact = 1;
+		    				firstitem = 0;
+		    				toitem = (allitems>nbrperpage) ? nbrperpage : allitems ;
+							createIntCont(_this);
+		    			} else {
+							apollon = apollon_all;
+		    				allitems = apollon_all.length;
+		    				allpages = Math.ceil(allitems/nbrperpage);
+		    				pageact = 1;
+		    				firstitem = 0;
+		    				toitem = (allitems>nbrperpage) ? nbrperpage : allitems ;
+							createIntCont(_this);
+		    			}
 	    			}
+    				var hs=$('#'+_this+'apollon-sidebar').height(), 
+    					ht=$('#'+_this+'-allContent').height();
+    				if (hs>=ht) $('#'+_this+'-allContent').css({'height':hs+'px'});
+	    					else $('#'+_this+'-allContent').css({'height':'auto'});
 	    		},
 	    		events = function(_this) {
 					$('.column100').unbind('mouseover').on('mouseover',function(){
@@ -438,7 +456,6 @@ if (typeof jQuery != 'undefined') {
 							var tableID=a.tableID, tblck_r='apollontable_'+tableID+'_r';
 							window.localStorage.setItem(tblck_r, searchval);
 						}
-						tosort(_this);
 						createIntCont(_this);
 						var searchInput = $('#'+_this+'-txt2 input');
 						var strLength = searchInput.val().length * 2;
@@ -454,7 +471,6 @@ if (typeof jQuery != 'undefined') {
 		    				pageact = 1;
 		    				firstitem = 0;
 		    				toitem = (allitems>nbrperpage) ? nbrperpage : allitems ;
-							tosort(_this);
 							setContent(_this);
 						}
 					});
@@ -525,6 +541,11 @@ if (typeof jQuery != 'undefined') {
 	    					value=$(this).attr('data-value');
 	    				setFilter(filter, value)
 	    			});
+	    			$('select.itm-sect-sel').unbind('change').change(function() {
+	    				var filter=$(this).attr('name'), 
+	    					value=$(this).val();
+	    				setFilter(filter, value)
+	    			});
 		    		$('#'+_this+'-txt4 .pagination a').unbind('click').click(function(){
 		    			pageact = parseInt($(this).attr('name'));
 		    			firstitem=parseInt((pageact-1) * nbrperpage);
@@ -545,12 +566,10 @@ if (typeof jQuery != 'undefined') {
 							ccc=document.getElementsByClassName('dropbtn')[2].contains(event.target);
 						if (!aaa && !bbb && !ccc) hidedrop(_this);
 					}
-					setTimeout(function() {
-	    				var hs=$('#'+_this+'apollon-sidebar').height(), 
-	    					ht=$('#'+_this+'-allContent').height();
-	    				if (hs>ht) $('#'+_this+'-allContent').css({'height':hs+'px'});
-		    					else $('#'+_this+'-allContent').css({'height':'auto'});
-					}, 1500);
+    				var hs=$('#'+_this+'apollon-sidebar').height(), 
+    					ht=$('#'+_this+'-allContent').height();
+    				if (hs>=ht) $('#'+_this+'-allContent').css({'height':hs+'px'});
+	    					else $('#'+_this+'-allContent').css({'height':'auto'});
 	    		},
 	    		hidedrop = function(_this) {$(".dropdown-content").removeClass("show");}, 
 	    		dropone = function(_this) {$('#'+_this+'dropone').removeClass("show").addClass("show");}, 
@@ -558,6 +577,19 @@ if (typeof jQuery != 'undefined') {
 	    		dropthree = function(_this) {$('#'+_this+'dropthree').removeClass("show").addClass("show");},
 	    		getHashValue = function(_this, key) {},
 	    		setContent = function(_this) {
+                    sortcolz = a.tosort;
+                    sortcol = sortcolz[0];
+                    coldirect = sortcolz[1];
+                    var specialsort = a.specialsort;
+	    			if (coldirect.toLowerCase()=='asc') coldirect=1;
+	    			if (coldirect.toLowerCase()=='desc') coldirect=0;
+                    if (specialsort.indexOf(sortcol)>=0) sortcol = 'sort_'+sortcol;
+                    if (typeof(Storage) !== "undefined") {
+                        var tblck_o='apollontable_'+tableID+'_o', tblck_c='apollontable_'+tableID+'_c';
+                        window.localStorage.setItem(tblck_o, coldirect);
+                        window.localStorage.setItem(tblck_c, sortcol);
+                    }
+                    apollon.sort( predicateBy(sortcol, coldirect) );
 					createCont(_this);
 				},
 	    		createCont = function(_this) {
@@ -911,24 +943,50 @@ if (typeof jQuery != 'undefined') {
 	    		// Sidebar
 	    			var filters=a.filters, filterMaxNum=a.filterMaxNum, fltr_ex=(filters.length>0)?true:false;
 	    			if (fltr_ex) {
-	    				cod='', nbractx=0;
+	    				cod='', nbractx=0, selectaz=0;
 	    				for (i in filter_list) {
-	    					cod+='<ul><li><h5>'+i+'</h5></li><li class="itm-sect itm-sect-no_filter"><a class="mail-no_filter" href="javascript:;" data-typ="filter" data-filter="" data-value=""><span class="apollon-circle"></span>'+lng['nofilter']+' <em class="text-muted filter-number"></em></a></li>';
-	    					var filterio = filter_list[i], filteriov;
-	    					for (var j = 0; j < filterio.length; j++) {
-	    						filteriov=filterio[j];
-	    						if (filteriov===true) filteriov=lng['true'];
-	    						if (filteriov===false) filteriov=lng['false'];
-	    						if (filteriov.length>0) nbractx++;
-	    						filteriov = filteriov.replace(/<\/?[^>]+(>|$)/g, "");
-	    						if (nbractx<=filterMaxNum && filteriov.length>0) cod+='<li class="itm-sect itm-sect-'+cleantotag(i)+'_'+cleantotag(filteriov)+'"><a class="mail-'+cleantotag(i)+'_'+cleantotag(filteriov)+'" href="javascript:;" data-typ="filter" data-filter="'+i+'" data-value="'+((filteriov==lng['true'])?'true':((filteriov==lng['false'])?'false':filteriov))+'"><span class="apollon-circle-empty"></span>'+filteriov+' <em class="text-muted filter-number"></em></a></li>';
-	    					}
-	    					cod+='</ul>';
+	    					var filterio = filter_list[i];
+	    					if (filterio.length>filterMaxNum) selectaz=1;
 	    				}
-	    				$('#'+_this+'apollon-sidebar').html(cod);
+	    				if (selectaz==0) {
+		    				for (i in filter_list) {
+		    					cod+='<ul><li><h5>'+i+'</h5></li><li class="itm-sect itm-sect-no_filter"><a class="mail-no_filter" href="javascript:;" data-typ="filter" data-filter="" data-value=""><span class="apollon-circle"></span>'+lng['nofilter']+' <em class="text-muted filter-number"></em></a></li>';
+		    					var filterio = filter_list[i], filteriov;
+		    					for (var j = 0; j < filterio.length; j++) {
+		    						filteriov=filterio[j];
+		    						if (filteriov===true) filteriov=lng['true'];
+		    						if (filteriov===false) filteriov=lng['false'];
+		    						if (filteriov.length>0) nbractx++;
+		    						filteriov = filteriov.replace(/<\/?[^>]+(>|$)/g, "");
+		    						if (nbractx<=filterMaxNum && filteriov.length>0) cod+='<li class="itm-sect itm-sect-'+cleantotag(i)+'_'+cleantotag(filteriov)+'"><a class="mail-'+cleantotag(i)+'_'+cleantotag(filteriov)+'" href="javascript:;" data-typ="filter" data-filter="'+i+'" data-value="'+((filteriov==lng['true'])?'true':((filteriov==lng['false'])?'false':filteriov))+'"><span class="apollon-circle-empty"></span>'+filteriov+' <em class="text-muted filter-number"></em></a></li>';
+		    					}
+		    					cod+='</ul>';
+		    				}
+		    				$('#'+_this+'apollon-sidebar').html(cod);
+	    				} else {
+	    					var idsq = [];
+		    				for (i in filter_list) {
+		    					cod+='<ul><li><h5>'+i+'</h5></li><li><select class="itm-sect-sel itm-sect-'+cleantotag(i)+'" id="filter-select-'+cleantotag(i)+'" name="'+i+'"><option value="no_filter">'+lng['nofilter']+'</option>';
+		    					var filterio = filter_list[i], filteriov;
+		    					idsq.push('#filter-select-'+cleantotag(i));
+		    					for (var j = 0; j < filterio.length; j++) {
+		    						filteriov=filterio[j];
+		    						if (filteriov===true) filteriov=lng['true'];
+		    						if (filteriov===false) filteriov=lng['false'];
+		    						nbractx++;
+		    						filteriov = filteriov.replace(/<\/?[^>]+(>|$)/g, "");
+		    						if (filteriov.length>0) cod+='<option value="'+((filteriov==lng['true'])?'true':((filteriov==lng['false'])?'false':filteriov))+'">'+filteriov+'</option>';
+		    					}
+		    					cod+='</select></li></ul>';
+		    				}
+		    				$('#'+_this+'apollon-sidebar').html(cod);
+		    				if((jQuery().chosen) && idsq.length>0) $(idsq.join(',')).chosen({width:'100%'});
+	    				}
+
+	    				
 	    				var hs=$('#'+_this+'apollon-sidebar').height(), 
 	    					ht=$('#'+_this+'-allContent').height();
-	    				if (hs>ht) $('#'+_this+'-allContent').css({'height':hs+'px'});
+	    				if (hs>=ht) $('#'+_this+'-allContent').css({'height':hs+'px'});
 	    					else $('#'+_this+'-allContent').css({'height':'auto'});
 	    			}
 	    			setPagination(_this);
@@ -1222,15 +1280,16 @@ if (typeof jQuery != 'undefined') {
 		    				$('#'+_this+' tbody').html(cod);
 		    			}
 					}
+					$('#'+_this+'-allContent').css({'height':'auto'});
 					$('#'+_this+'-filters').addClass('hidden');
 					setPagination(_this);
     				var hs=$('#'+_this+'apollon-sidebar').height(), 
     					ht=$('#'+_this+'-allContent').height();
-    				if (hs>ht) $('#'+_this+'-allContent').css({'height':hs+'px'});
+    				if (hs>=ht) $('#'+_this+'-allContent').css({'height':hs+'px'});
 	    					else $('#'+_this+'-allContent').css({'height':'auto'});
 	    		},
 	    		setPagination = function(_this) {
-				    var pg_a=1, pg_b=1, pg_lst=allpages-4, pgx = [1,1,2,3,9,10,12], pagination=a.pagination;
+				    var pg_a=1, pg_b=1, pg_lst=allpages-2, pgx = [1,1,2,3,9,10,12], pagination=a.pagination;
 				    if (allpages<6) {pg_a=1;pg_b=allpages;}
 				        else if (pageact<5) {pg_a=1;pg_b=5;}
 				            else if (pageact>=pg_lst) {pg_a=allpages-4; pg_b=allpages;}
@@ -1433,7 +1492,7 @@ if (typeof jQuery != 'undefined') {
 			    			}
 	            		}
 
-	            		createCont(_this);
+	            		setContent(_this);
 	    			});
 	    		},
 	    		drawgraph = function(_this) {
@@ -1652,7 +1711,6 @@ if (typeof jQuery != 'undefined') {
 	    				pageact = 1;
 	    				firstitem = 0;
 	    				toitem = (allitems>nbrperpage) ? nbrperpage : allitems ;
-						tosort(_this);
 						setContent(_this);
 					}
 	    		}, 
