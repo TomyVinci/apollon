@@ -1246,6 +1246,100 @@ table.table-apollon tr td a.apollonbtn.btn-danger, dl.tomylist dd a.apollonbtn.b
 }
 
 /*//////////////////////////////////////////////////////////////////
+[ Loading ]*/
+
+.pdfifty {padding: 30px 0 40px;}
+.loading {
+  font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+  text-transform:uppercase;
+  
+  width:150px;
+  text-align:center;
+  line-height:50px;
+  
+  position:absolute;
+  left:0;right:0;top:50%;
+  margin:auto;
+  transform:translateY(-25%);
+}
+
+.loading span {
+  position:relative;
+  z-index:999;
+  color:#fff;
+}
+.loading:before {
+  content:'';
+  background:#3D82DF;
+  width:128px;
+  height:36px;
+  display:block;
+  position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  margin:auto;
+  
+  animation:2s loadingBefore infinite ease-in-out;
+}
+
+@keyframes loadingBefore {
+  0%   {transform:translateX(-14px);}
+  50%  {transform:translateX(14px);}
+  100% {transform:translateX(-14px);}
+}
+
+.loading:after {
+  content:'';
+  background:#4a3d4c;
+  width:14px;
+  height:60px;
+  display:block;
+  position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  margin:auto;
+  opacity:.5;
+  
+  animation:2s loadingAfter infinite ease-in-out;
+}
+
+@keyframes loadingAfter {
+  0%   {transform:translateX(-50px);}
+  50%  {transform:translateX(50px);}
+  100% {transform:translateX(-50px);}
+}
+
+
+.tt-loading-bg {
+  height: 100%;
+  background: #ede0ef;
+  padding: 30px;
+  margin: -25px;
+  text-align: center;
+}
+
+.tt-loading-bg>div {
+  width: 180px;
+  height: 180px;
+  line-height: 176px;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: auto;
+}
+.tt-loading-bg[name="1ABC9C"]>div {background-color: #1ABC9C;}
+.tt-loading-bg[name="34495E"]>div {background-color: #34495E;}
+.tt-loading-bg[name="F39C12"]>div {background-color: #F39C12;}
+.tt-loading-bg[name="9B59B6"]>div {background-color: #9B59B6;}
+.tt-loading-bg[name="3498DB"]>div {background-color: #3498DB;}
+.tt-loading-bg[name="E74C3C"]>div {background-color: #E74C3C;}
+.tt-loading-bg[name="2ECC71"]>div {background-color: #2ECC71;}
+.tt-loading-bg[name="2C3E50"]>div {background-color: #2C3E50;}
+.tt-loading-bg[name="F1C40F"]>div {background-color: #F1C40F;}
+.tt-loading-bg[name="8E44AD"]>div {background-color: #8E44AD;}
+.tt-loading-bg[name="2980B9"]>div {background-color: #2980B9;}
+
+.tt-loading-bg>div img {vertical-align: middle;}
+
+/*//////////////////////////////////////////////////////////////////
 [ Graph Flot ]*/
 .drawgraph-flot-prnt {
   box-sizing: border-box;

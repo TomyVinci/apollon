@@ -1829,6 +1829,8 @@ if (typeof jQuery != 'undefined') {
 
     		// HTML data
     		if (a.datatype=='html') {
+	    		var cod = '<thead><tr class="row100 head"><th class="column100 column1" data-column="column1" scope="col">'+lng['loading']+'</th></tr></thead><tfoot><tr class="row100 foot"><th class="column100 column1" data-column="column1" scope="col">'+lng['loading']+'</th></tr></tfoot><tbody><tr><td>'+((a.loading==0)?'<div class="pdfifty"><div class="loading"><span>'+a.loadtxt+'</span></div></div>':'<div class="tt-loading-bg" name="'+loaders[a.loading]['color']+'"><div><img src="'+a.distloc+'svg-loaders/'+loaders[a.loading]['file']+'.svg" width="'+loaders[a.loading]['width']+'" alt=""></div></div>')+'</td></tr></tbody>';
+	    		$('#'+_this).html(cod);
 	    		var filters=a.filters, fltr_ex=(filters.length>0)?true:false, tr = $(this).find('tbody tr');
 	    		if (fltr_ex) for (var i = 0; i < filters.length; i++) filter_list[filters[i]]=[];
 	    		for (var i = 0; i < tr.length; i++) {
@@ -1863,6 +1865,8 @@ if (typeof jQuery != 'undefined') {
 	    		callback = a.callback;
 	    		callback(apollon_all);
     		} else if (a.datatype=='js') {
+	    		var cod = '<thead><tr class="row100 head"><th class="column100 column1" data-column="column1" scope="col">'+lng['loading']+'</th></tr></thead><tfoot><tr class="row100 foot"><th class="column100 column1" data-column="column1" scope="col">'+lng['loading']+'</th></tr></tfoot><tbody><tr><td>'+((a.loading==0)?'<div class="pdfifty"><div class="loading"><span>'+a.loadtxt+'</span></div></div>':'<div class="tt-loading-bg" name="'+loaders[a.loading]['color']+'"><div><img src="'+a.distloc+'svg-loaders/'+loaders[a.loading]['file']+'.svg" width="'+loaders[a.loading]['width']+'" alt=""></div></div>')+'</td></tr></tbody>';
+	    		$('#'+_this).html(cod);
 	    		var filters=a.filters, fltr_ex=(filters.length>0)?true:false;
 	    		if (fltr_ex) for (var i = 0; i < filters.length; i++) filter_list[filters[i]]=[];
 	    		apollon_all = a.data;
@@ -1889,8 +1893,12 @@ if (typeof jQuery != 'undefined') {
 	    		callback = a.callback;
 	    		callback(apollon_all);
     		} else if (a.datatype=='ajax') {
+	    		var cod = '<thead><tr class="row100 head"><th class="column100 column1" data-column="column1" scope="col">'+lng['loading']+'</th></tr></thead><tfoot><tr class="row100 foot"><th class="column100 column1" data-column="column1" scope="col">'+lng['loading']+'</th></tr></tfoot><tbody><tr><td>'+((a.loading==0)?'<div class="pdfifty"><div class="loading"><span>'+a.loadtxt+'</span></div></div>':'<div class="tt-loading-bg" name="'+loaders[a.loading]['color']+'"><div><img src="'+a.distloc+'svg-loaders/'+loaders[a.loading]['file']+'.svg" width="'+loaders[a.loading]['width']+'" alt=""></div></div>')+'</td></tr></tbody>';
+	    		$('#'+_this).html(cod);
 		    	ajaxload(_this);
     		} else {
+	    		var cod = '<thead><tr class="row100 head"><th class="column100 column1" data-column="column1" scope="col">'+lng['loading']+'</th></tr></thead><tfoot><tr class="row100 foot"><th class="column100 column1" data-column="column1" scope="col">'+lng['loading']+'</th></tr></tfoot><tbody><tr><td>'+((a.loading==0)?'<div class="pdfifty"><div class="loading"><span>'+a.loadtxt+'</span></div></div>':'<div class="tt-loading-bg" name="'+loaders[a.loading]['color']+'"><div><img src="'+a.distloc+'svg-loaders/'+loaders[a.loading]['file']+'.svg" width="'+loaders[a.loading]['width']+'" alt=""></div></div>')+'</td></tr></tbody>';
+	    		$('#'+_this).html(cod);
 	    		apollon_all = [];
 	    		apollon = [];
 		    	apollonHead = [];
