@@ -232,8 +232,9 @@ if (typeof jQuery != 'undefined') {
 					}
 				}, 
 	    		xsort = function(_this, sortcol, coldirect) {
-	    			if (coldirect.toLowerCase()=='asc') coldirect=1;
-	    			if (coldirect.toLowerCase()=='desc') coldirect=0;
+	    			coldirect = coldirect?.toLowerCase() || coldirect;
+	    			if (coldirect=='asc') coldirect=1;
+	    			if (coldirect=='desc') coldirect=0;
 					var specialsort = a.specialsort;
 					if (specialsort.indexOf(sortcol)>=0) sortcol = 'sort_'+sortcol;
 					if (typeof(Storage) !== "undefined") {
@@ -245,7 +246,7 @@ if (typeof jQuery != 'undefined') {
 		    		createIntCont(_this);
 	    		},
 	    		cleantotag = function(txt) {
-	    			txt = txt.toLowerCase();
+	    			txt = txt?.toLowerCase() || txt;
 	    			txt = txt.replace(/[^0-9a-z]/gi,'');
 	    			return txt;
 	    		},
@@ -583,8 +584,9 @@ if (typeof jQuery != 'undefined') {
                     sortcol = sortcolz[0];
                     coldirect = sortcolz[1];
                     var specialsort = a.specialsort;
-	    			if (coldirect.toLowerCase()=='asc') coldirect=1;
-	    			if (coldirect.toLowerCase()=='desc') coldirect=0;
+                    coldirect = coldirect?.toLowerCase() || coldirect;
+	    			if (coldirect=='asc') coldirect=1;
+	    			if (coldirect=='desc') coldirect=0;
                     if (specialsort.indexOf(sortcol)>=0) sortcol = 'sort_'+sortcol;
                     if (typeof(Storage) !== "undefined") {
                         var tblck_o='apollontable_'+tableID+'_o', tblck_c='apollontable_'+tableID+'_c';
