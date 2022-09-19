@@ -1424,3 +1424,13 @@ table.table-apollon tr td a.apollonbtn.btn-danger, dl.tomylist dd a.apollonbtn.b
 .alert-danger .alert-link {
   color: #843534;
 }
+
+dl.tomylist[data-color="success"]:not(:hover) {background-color: #c0e4c4!important;}
+dl.tomylist[data-color="warning"]:not(:hover) {background-color: #eaeac8!important;}
+dl.tomylist[data-color="info"]:not(:hover) {background-color: #dbe7e8!important;}
+dl.tomylist[data-color="danger"]:not(:hover) {background-color: #f0e3e7!important;}
+
+table tr[data-color="success"]:not(:hover) {background-color: #9fe9bf!important;}
+table tr[data-color="warning"]:not(:hover) {background-color: #f9e596!important;}
+table tr[data-color="info"]:not(:hover) {background-color: #add6f1!important;}
+table tr[data-color="danger"]:not(:hover) {background-color: #f7c1bb!important;}
