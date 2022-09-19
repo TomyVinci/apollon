@@ -213,9 +213,11 @@ if (typeof jQuery != 'undefined') {
 						xx = b[prop];
 						yy = c[prop];
 						if ( sortnbr.indexOf(tsts)>=0 || specialsort.indexOf(tsts)>=0 ) {
-							xx = (xx) ? xx.toString().replace(' ', '') : 0;
-							yy = (yy) ? yy.toString().replace(' ', '') : 0;
+							xx = xx?.toString() || xx;
+							xx = xx?.replace(' ', '') || xx;
 							xx = parseFloat(xx);
+							yy = yy?.toString() || yy;
+							yy = yy?.replace(' ', '') || yy;
 							yy = parseFloat(yy);
 						}
 						if (dirkt==1 || dirkt=='asc') {
@@ -1442,7 +1444,12 @@ if (typeof jQuery != 'undefined') {
 			    				var tbl = apollon_all[i], line = '';
 			    				for (var j = 0; j < apollonHead.length; j++) {
 			    					var val = tbl[apollonHead[j]];
+			    					if (specialsort.indexOf(apollonHead[j])) val = tbl['sort_'+apollonHead[j]];
 			    					if (apollonHead[j]==col) {
+										val = val?.toString() || val;
+										val = val?.replace(' ', '') || val;
+										val = (typeof(notag) === 'string') ? val.replace(/<\/?[^>]+(>|$)/g, "") : val;
+			    						val = parseFloat(val);
 			    						if ((opr==0 && val==vlx) || (opr==1 && val>vlx) || (opr==2 && val>=vlx) || (opr==3 && val<vlx) || (opr==4 && val<=vlx) || (opr==5 && val!=vlx)) {
 			    							apollon.push(apollon_all[i]);
 											nbr_found++;
@@ -1506,7 +1513,7 @@ if (typeof jQuery != 'undefined') {
 
 		    			cod+='<div class="col-md-12 col-sm-12 text-center" id="'+_this+'-insertContentsta"></div>';
 		    			cod+='<div class="col-md-3 col-sm-12"><label>'+lng['abscis']+'<br/><select class="custom-select custom-select-sm form-control form-control-sm" id="'+_this+'-drawgraph-1">'+code_ckeck_2+'</select></label></div>';
-		    			cod+='<div class="col-md-3 col-sm-12"><label>'+lng['coordo']+'<br><select class="custom-select custom-select-sm form-control form-control-sm" id="'+_this+'-drawgraph-2">'+code_ckeck_1+'</select></label></div>';
+		    			cod+='<div class="col-md-3 col-sm-12"><label>'+lng['coordo']+'<br><select class="custom-select custom-select-sm form-control form-control-sm" id="'+_this+'-drawgraph-2" multiple>'+code_ckeck_1+'</select></label></div>';
 		    			cod+='<div class="col-md-3 col-sm-12"><label>'+lng['typ']+'<br><select class="custom-select custom-select-sm form-control form-control-sm" id="'+_this+'-drawgraph-3">\<option value="0">'+lng['points']+'</option><option value="1">'+lng['lines']+'</option><option value="2">'+lng['lines_bg']+'</option><option value="3">'+lng['lines_step']+'</option><option value="4">'+lng['bars']+'</option></select></label></div>';
 		    			cod+='<div class="col-md-3 col-sm-12 text-right"><button type="button" class="btn btn-primary" id="drawgraph-btn">'+lng['draw']+'</button></div><hr/>';
 		    			el.html(cod);
@@ -1522,16 +1529,18 @@ if (typeof jQuery != 'undefined') {
 			    				$('#'+_this+'-insertContentsta').html('<div class="drawgraph-flot-prnt"><div id="drawgraph-flot" class="drawgraph-flot"></div></div>');
 
 				    			var abscis=[],  coordo=[],  coordovals=[], mino=0, maxo=0, idx, datx={}, daty=[];
-				    			if (cor=='count') {
+				    			if (cor?.[0]=='count') {
 				    				for (var i = 0; i < allitems; i++) {
 				    					for (var j = 0; j < apollonHead.length; j++) {
 					    					var tbl = apollon[i];
 					    					if ( apollonHead[j]==abs ) {
-					    						if (daty.indexOf(tbl[apollonHead[j]])>-1) {
-					    							datx[tbl[apollonHead[j]]]=datx[tbl[apollonHead[j]]]+1;
+												var valx = tbl[apollonHead[j]];
+												valx = (typeof(valx) === 'string') ? valx.replace(/<\/?[^>]+(>|$)/g, "") : valx;
+					    						if (daty.indexOf(valx)>-1) {
+					    							datx[valx]=datx[valx]+1;
 					    						} else {
-					    							daty.push(tbl[apollonHead[j]]);
-					    							datx[tbl[apollonHead[j]]]=1;
+					    							daty.push(valx);
+					    							datx[valx]=1;
 					    						}
 					    					}
 				    					}
@@ -1549,10 +1558,19 @@ if (typeof jQuery != 'undefined') {
 				    				for (var i = 0; i < allitems; i++) {
 				    					var tbl = apollon[i];
 				    					for (var j = 0; j < apollonHead.length; j++) {
-				    						var val = parseFloat(tbl[apollonHead[j]]);
-				    						if ( apollonHead[j]==abs ) abscis.push([i, tbl[apollonHead[j]]]);
+				    						var val = tbl[apollonHead[j]];
+				    						if ( apollonHead[j]==abs ) {
+												var valx = tbl[apollonHead[j]];
+												valx = (typeof(valx) === 'string') ? valx.replace(/<\/?[^>]+(>|$)/g, "") : valx;
+				    							abscis.push([i, valx]);
+				    						}
 				    						if ( cor.indexOf(apollonHead[j])>=0 ) {
 				    							if (coordovals?.[j]===undefined) coordovals[j]=[];
+					    						if (specialsort.indexOf(apollonHead[j])) val = tbl['sort_'+apollonHead[j]];
+												val = val?.toString() || val;
+												val = val?.replace(' ', '') || val;
+												val = (typeof(val) === 'string') ? val.replace(/<\/?[^>]+(>|$)/g, "") : val;
+												val = parseFloat(val);
 				    							coordovals[j].push([i, val]);
 					    						if (val>maxo) maxo=val+val*.2;
 					    						if (mino==0) mino=val; else if (val<mino) mino=val-val*.2;
@@ -1587,12 +1605,13 @@ if (typeof jQuery != 'undefined') {
 									opacity: 0.80
 								}).appendTo("body");
 
-								$("#drawgraph-btn").bind("plothover", function (event, pos, item) {
+								$("#drawgraph-flot").bind("plothover", function (event, pos, item) {
+									console.log(event, pos, item);
 									if (item) {
 										var x = item.datapoint[0].toFixed(2),
 											y = item.datapoint[1].toFixed(2);
 
-										$("#apollontooltip").html(item.series.label + " of " + x + " = " + y)
+										$("#apollontooltip").html(item.series.label + ": " + x + " = " + y)
 											.css({top: item.pageY+5, left: item.pageX+5})
 											.fadeIn(200);
 									} else {
@@ -1643,8 +1662,11 @@ if (typeof jQuery != 'undefined') {
 							dt_nbr++;
 							for (var i = 0; i < numericcolon.length; i++) {
 								dt_val = apollon[j][numericcolon[i]];
-								dt_val=dt_val.replace(/ /g,'');
-								dt_val=parseFloat(dt_val);
+								if (specialsort.indexOf(apollonHead[j])) dt_val = apollon[j]['sort_'+numericcolon[i]];
+								dt_val = (typeof(dt_val) === 'string') ? dt_val.replace(/<\/?[^>]+(>|$)/g, "") : dt_val;
+								dt_val = dt_val?.toString() || dt_val;
+								dt_val = dt_val?.replace(' ', '') || dt_val;
+								dt_val = parseFloat(dt_val);
 
 								dat_x['nbr'][numericcolon[i]]=dt_nbr;
 								dat_x['sum'][numericcolon[i]]+=dt_val;
