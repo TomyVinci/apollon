@@ -1446,7 +1446,7 @@ if (typeof jQuery != 'undefined') {
 			    				var tbl = apollon_all[i], line = '';
 			    				for (var j = 0; j < apollonHead.length; j++) {
 			    					var val = tbl[apollonHead[j]];
-			    					if (specialsort.indexOf(apollonHead[j])) val = tbl['sort_'+apollonHead[j]];
+			    					if (specialsort.indexOf(apollonHead[j])>=0) val = tbl['sort_'+apollonHead[j]];
 			    					if (apollonHead[j]==col) {
 										val = val?.toString() || val;
 										val = val?.replace(' ', '') || val;
@@ -1568,7 +1568,7 @@ if (typeof jQuery != 'undefined') {
 				    						}
 				    						if ( cor.indexOf(apollonHead[j])>=0 ) {
 				    							if (coordovals?.[j]===undefined) coordovals[j]=[];
-					    						if (specialsort.indexOf(apollonHead[j])) val = tbl['sort_'+apollonHead[j]];
+					    						if (specialsort.indexOf(apollonHead[j])>=0) val = tbl['sort_'+apollonHead[j]];
 												val = val?.toString() || val;
 												val = val?.replace(' ', '') || val;
 												val = (typeof(val) === 'string') ? val.replace(/<\/?[^>]+(>|$)/g, "") : val;
@@ -1664,7 +1664,7 @@ if (typeof jQuery != 'undefined') {
 							dt_nbr++;
 							for (var i = 0; i < numericcolon.length; i++) {
 								dt_val = apollon[j][numericcolon[i]];
-								if (specialsort.indexOf(apollonHead[j])) dt_val = apollon[j]['sort_'+numericcolon[i]];
+								if (specialsort.indexOf(apollonHead[j])>=0) dt_val = apollon[j]['sort_'+numericcolon[i]];
 								dt_val = (typeof(dt_val) === 'string') ? dt_val.replace(/<\/?[^>]+(>|$)/g, "") : dt_val;
 								dt_val = dt_val?.toString() || dt_val;
 								dt_val = dt_val?.replace(' ', '') || dt_val;
