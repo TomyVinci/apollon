@@ -52,6 +52,12 @@ if (typeof jQuery != 'undefined') {
 				toimg: [],
 				// Columns to sort as number (numeric sort)
 				sortnbr: [],
+				// Columns to consider as date mm/dd/yyyy
+				datetype: [],
+				// the date format d/m or m/d
+				dateformat: 'm/d/y',
+				// Columns to consider as time hh:ii
+				timetype: [],
 				// Columns to show as True/False
 				trufalse: [],
 				// Columns to show as button to do actions
@@ -1416,12 +1422,37 @@ if (typeof jQuery != 'undefined') {
 	    			var cod='<div class="alert alert-danger"><strong>'+lng['error']+'</strong> '+msg+'</div>';
 	    			el.html(cod);
 	    		},
+	    		parseDt = function(dat, format) {
+	    			if (typeof dat===undefined) {retdat=0;}
+	    			else if (typeof dat === 'number') dat=retdat; else {
+		    			var retdat='', 
+		    				dateRegb = /^(\d{2})[./-](\d{2})[./-](\d{4})$/, 
+							dateRega = /^(\d{2})[./-](\d{2})[./-](\d{4}) (\d{2}):(\d{2})$/, 
+		    				dateRegc = /^(\d{4})[./-](\d{2})[./-](\d{2})$/, 
+							dateRegd = /^(\d{4})[./-](\d{2})[./-](\d{2}) (\d{2}):(\d{2})$/;
+						if (format=='m/d/y' || format=='m/d/y h:i') retdat=dat;
+						else if (format=='d/m/y' || format=='d/m/y h:i') {
+		    				if (format=='d/m/y') retdat = dat.replace(dateRegb, '$2/$1/$3');
+		    				if (format=='d/m/y h:i') retdat = dat.replace(dateRega, '$2/$1/$3 $4:$5');
+						}
+						else if (format=='y/m/d' || format=='y/m/d h:i') {
+		    				if (format=='y/m/d') retdat = dat.replace(dateRegc, '$2/$3/$1');
+		    				if (format=='y/m/d h:i') retdat = dat.replace(dateRegd, '$2/$3/$1 $4:$5');
+						}
+						else if (format=='y/d/m' || format=='y/d/m h:i') {
+		    				if (format=='y/d/m') retdat = dat.replace(dateRegc, '$3/$2/$1');
+		    				if (format=='y/d/m h:i') retdat = dat.replace(dateRegd, '$3/$2/$1 $4:$5');
+						}
+						if (dateRegb.test(retdat) || dateRega.test(retdat)) retdat = Date.parse(retdat);
+							else retdat=0;
+	    			}
+					return retdat;
+	    		}, 
 	    		what2show = function(_this) {
 	    			if (numericexist==1) {
 	    				var el=$('#'+_this+'-filters');
 	    				el.removeClass('hidden');
 
-	    				// Dynamic filter
 		    			var cod='<div class="col-md-12 col-sm-12 text-center" id="'+_this+'-insertContent"></div><div class="col-md-3 col-sm-12"><label>'+lng['column']+'<br/><select class="custom-select custom-select-sm form-control form-control-sm" id="'+_this+'-insertContent-1">';
 		    			for (var i = 0; i < apollonHead.length; i++) {
 		    				nbr=i+1;
@@ -1431,27 +1462,41 @@ if (typeof jQuery != 'undefined') {
 		    			cod+='</select></label></div><div class="col-md-3 col-sm-12"><label>'+lng['operation']+'<br><select class="custom-select custom-select-sm form-control form-control-sm" id="'+_this+'-insertContent-2"><option value="0">=</option><option value="1">&gt;</option><option value="2">&gt;=</option><option value="3">&lt;</option><option value="4">&lt;=</option><option value="5">!=</option></select></label></div><div class="col-md-3 col-sm-12"><label>'+lng['value']+'<br><input type="text" id="'+_this+'-insertContent-3" class="form-control form-control-sm" placeholder="'+lng['value']+'"></label></div><div class="col-md-3 col-sm-12 text-right"><button type="button" class="btn btn-primary" id="insertContent-btn">'+lng['show']+'</button></div><hr/>';
 		    			el.html(cod);
 
-					    if((jQuery().chosen)) $('#'+_this+'-insertContent-1, #'+_this+'-insertContent-2').chosen({width:'100%'});
+				    	if((jQuery().chosen)) $('#'+_this+'-insertContent-1, #'+_this+'-insertContent-2').chosen({width:'100%'});
 
 		    			$('#insertContent-btn').unbind('click').click(function() {
 		    				el.addClass('hidden');
 		    				var col=$('#'+_this+'-insertContent-1').val(), 
 		    					opr=parseInt($('#'+_this+'-insertContent-2').val()), 
-		    					vlx=parseFloat($('#'+_this+'-insertContent-3').val());
+		    					vlx=$('#'+_this+'-insertContent-3').val();
 
 			    			apollon = [];
 			    			allitems = apollon_all.length;
-			    			var nbr_found = 0;
+							var datetype=a.datetype, timetype=a.timetype, dateformat=a.dateformat, nbr_found = 0;
 			    			for (var i = 0; i < allitems; i++) {
 			    				var tbl = apollon_all[i], line = '';
 			    				for (var j = 0; j < apollonHead.length; j++) {
-			    					var val = tbl[apollonHead[j]];
-			    					if (specialsort.indexOf(apollonHead[j])>=0) val = tbl['sort_'+apollonHead[j]];
 			    					if (apollonHead[j]==col) {
-										val = val?.toString() || val;
-										val = val?.replace(' ', '') || val;
-										val = (typeof(notag) === 'string') ? val.replace(/<\/?[^>]+(>|$)/g, "") : val;
-			    						val = parseFloat(val);
+			    						var val = tbl[apollonHead[j]];
+				    					if (specialsort.indexOf(apollonHead[j])>=0) val=tbl['sort_'+apollonHead[j]];
+				    					if (datetype.indexOf(apollonHead[j])>=0) {
+				    						val=parseDt(val, dateformat);
+				    						vlx=parseDt(vlx, dateformat);
+				    					}
+				    					if (timetype.indexOf(apollonHead[j])>=0) {
+				    						val=Date.parse('01/01/1970 '+val);
+				    						vlx=Date.parse('01/01/1970 '+vlx);
+				    					}
+				    					if (sortnbr.indexOf(apollonHead[j])>=0) {
+											val = val?.toString() || val;
+											val = val?.replace(' ', '') || val;
+											val = (typeof(val)==='string') ? val.replace(/<\/?[^>]+(>|$)/g,""):val;
+				    						val = parseFloat(val);
+											vlx = vlx?.toString() || vlx;
+											vlx = vlx?.replace(' ', '') || vlx;
+											vlx = (typeof(vlx)==='string') ? vlx.replace(/<\/?[^>]+(>|$)/g,""):vlx;
+				    						vlx = parseFloat(vlx);
+				    					}
 			    						if ((opr==0 && val==vlx) || (opr==1 && val>vlx) || (opr==2 && val>=vlx) || (opr==3 && val<vlx) || (opr==4 && val<=vlx) || (opr==5 && val!=vlx)) {
 			    							apollon.push(apollon_all[i]);
 											nbr_found++;
@@ -1467,7 +1512,7 @@ if (typeof jQuery != 'undefined') {
 			    			if (toitem>allitems) toitem=allitems;
 			    			createIntCont(_this);
 		    			});
-		    		}
+	    			}
 	    		},
 	    		setFilterzsel = function(_this) {
     				var el=$('#'+_this+'-filters'), cod='', colz='';
